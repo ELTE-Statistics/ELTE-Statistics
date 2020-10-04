@@ -1,3 +1,7 @@
+/target
+/StatisticsApp/target
+StatisticsApp/.idea/
+
 # Compiled class file
 *.class
 
