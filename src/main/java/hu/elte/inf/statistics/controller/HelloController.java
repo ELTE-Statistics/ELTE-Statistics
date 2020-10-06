@@ -1,4 +1,4 @@
-package statistics.controller;
+package hu.elte.inf.statistics.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,23 +11,22 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class HelloController {
 
-    @GetMapping("")
+    @GetMapping("/")
     public ModelAndView render(HttpServletRequest req) {
         ModelAndView mv = new ModelAndView("main");
-        req.setAttribute("txt","");
+        req.setAttribute("txt", "");
         return mv;
     }
 
-    @PostMapping("")
+    @PostMapping("/")
     public ModelAndView update(HttpServletRequest req, @RequestParam String button) {
         ModelAndView mv = new ModelAndView("main");
-        if(button.equals("bt1")) {
+        if (button.equals("bt1")) {
             req.setAttribute("txt", "Hello World!");
-        }
-        else
+        } else {
             req.setAttribute("txt", "Goodbye World!");
+        }
         return mv;
     }
-
 
 }
