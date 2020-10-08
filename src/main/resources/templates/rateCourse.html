@@ -1,8 +1,36 @@
 <html>
 <head>
     <title>Rate Course</title>
+    <link rel="stylesheet" href="/resources/css/RateStyle.css">
 </head>
 <body>
-    <h1>Rate Course</h1>
+<h1>Rate Course</h1>
+<div class="loginbox">
+    <form action="/rateCourse" method="post">
+        <div class="textbox">
+<!--            <label for="cname">Course name:</label>-->
+            <i class="fa fa-user" aria-hidden="true"></i>
+            <input type="text" placeholder="Course name" id="cname" name="courseName"><br><br>
+        </div>
+
+        <div class="textbox">
+<!--            <label for="dffc">Difficulty:</label>-->
+            <input type="number" placeholder="Difficulty" id="dffc" name="difficulty"><br><br>
+        </div>
+
+        <div class="textbox">
+<!--            <label for="grd">Grade:</label>-->
+            <input type="number"  placeholder="Grade" id="grd" name="grade"><br><br>
+        </div>
+
+        <div class="textbox">
+<!--            <label for="fdb">Feedback:</label>-->
+            <input type="text" placeholder="Feedback" id="fdb" name="feedback"><br><br>
+        </div>
+
+        <button type="submit" name="button" value="submit-bt">Submit</button>
+    </form>
+</div>
+    <p th:text="${txt}"></p>
 </body>
 </html>

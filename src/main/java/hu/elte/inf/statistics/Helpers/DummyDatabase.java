@@ -15,7 +15,7 @@ public class DummyDatabase {
         public ArrayList<String> feedback = new ArrayList<>();
     }
 
-    private HashMap<String, CourseData> data;
+    private HashMap<String, CourseData> data = new HashMap<>();
 
     private static DummyDatabase database;
     public static DummyDatabase getDatabase() {
