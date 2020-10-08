@@ -17,6 +17,15 @@ public class DummyDatabase {
 
     private HashMap<String, CourseData> data;
 
+    private static DummyDatabase database;
+    public static DummyDatabase getDatabase() {
+        if(database == null)
+            database = new DummyDatabase();
+        return database;
+    }
+
+    private DummyDatabase() {}
+
     public void createNewCourse(String courseName){
         CourseData course = new CourseData();
         course.name = courseName;
