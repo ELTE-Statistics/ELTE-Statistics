@@ -1,4 +1,4 @@
-package hu.elte.inf.statistics.controller;
+package hu.elte.inf.statistics.Controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
