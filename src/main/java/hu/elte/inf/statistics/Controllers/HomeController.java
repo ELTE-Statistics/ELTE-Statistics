@@ -14,7 +14,6 @@ public class HomeController {
     @GetMapping("/")
     public ModelAndView render(HttpServletRequest req) {
         ModelAndView mv = new ModelAndView("main");
-        req.setAttribute("txt", "");
         return mv;
     }
 
