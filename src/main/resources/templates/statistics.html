@@ -1,14 +1,22 @@
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Statistics</title>
 </head>
 <body>
 <h1>Statistics</h1>
-<h3>Professor Information</h3>
-<img src="something.jpg" alt="Professor portrait" width="50" height="60">
-<p>professor name</p>
-<p>average score</p>
-<button type="submit" name="button" value="bt1">Rate Professor</button>
-<p>student comments</p>
+<table>
+    <thead>
+    <tr>
+        <th>Course</th>
+        <th>Average difficulty</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:unless="${course_name.isEmpty()}" th:each="i : ${#numbers.sequence(0, course_name.size() - 1)}">
+        <td th:text="${course_name.get(i)}"></td>
+        <td th:text="${average_difficulty.get(i)}"></td>
+    </tr>
+    </tbody>
+</table>
 </body>
 </html>
