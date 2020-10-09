@@ -24,7 +24,9 @@ public class DummyDatabase {
         return database;
     }
 
-    private DummyDatabase() {}
+    private DummyDatabase() {
+        this.data = new HashMap<>();
+    }
 
     public void createNewCourse(String courseName){
         CourseData course = new CourseData();
