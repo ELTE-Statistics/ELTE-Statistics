@@ -1,7 +1,9 @@
 package hu.elte.inf.statistics.Helpers;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.Set;
 
 public class DummyDatabase {
 
@@ -24,7 +26,9 @@ public class DummyDatabase {
         return database;
     }
 
-    private DummyDatabase() {}
+    private DummyDatabase() {
+        this.data = new HashMap<>();
+    }
 
     public void createNewCourse(String courseName){
         CourseData course = new CourseData();
@@ -61,6 +65,10 @@ public class DummyDatabase {
         }
         CourseData course = data.get(courseName);
         course.feedback.add(comment);
+    }
+
+    public Set<String> getCourseNames() {
+        return Collections.unmodifiableSet(this.data.keySet());
     }
 
     public double getAverageDifficulty(String courseName){
