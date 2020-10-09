@@ -14,7 +14,7 @@ public class StatisticsController {
     public String getData(Model model) {
         Set<String> data = DummyDatabase.getDatabase().getCourseNames();
         ArrayList<Double> avg_difficulty = new ArrayList<Double>();
-        ArrayList<String> course_name = new ArrayList<String>();
+        ArrayList<String> course_name = new ArrayList<String>(data);
 
         for(String name: data) {
             avg_difficulty.add(DummyDatabase.getDatabase().getAverageDifficulty(name));
