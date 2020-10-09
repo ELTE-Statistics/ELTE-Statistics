@@ -1,16 +1,23 @@
 package hu.elte.inf.statistics.Controllers;
 
+import hu.elte.inf.statistics.Helpers.DummyDatabase;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
+import java.util.Set;
 
 @Controller
 public class StatisticsController {
     @GetMapping("/statistics")
-    public ModelAndView render(HttpServletRequest req) {
-        ModelAndView mv = new ModelAndView("statistics");
-        return mv;
+    public String getData(Model model) {
+        Set<String> data = DummyDatabase.getDatabase().getCourseNames();
+        ArrayList<Double> avg_difficulty = new ArrayList<Double>();
+        for(String name: data) {
+            avg_difficulty.add(DummyDatabase.getDatabase().getAverageDifficulty(name));
+        }
+        model.addAttribute("average_difficulty", avg_difficulty);
+        return "statistics";
     }
 }
