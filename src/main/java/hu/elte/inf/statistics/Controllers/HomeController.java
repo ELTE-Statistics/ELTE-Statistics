@@ -14,16 +14,15 @@ public class HomeController {
     @GetMapping("/")
     public ModelAndView render(HttpServletRequest req) {
         ModelAndView mv = new ModelAndView("main");
-        req.setAttribute("txt", "");
         return mv;
     }
 
     @PostMapping("/")
     public ModelAndView update(HttpServletRequest req, @RequestParam String button) {
         if (button.equals("bt1")) {
-            return new ModelAndView("statistics");
+            return new ModelAndView("redirect:statistics");
         } else {
-            return new ModelAndView("rateCourse");
+            return new ModelAndView("redirect:rateCourse");
         }
     }
 
