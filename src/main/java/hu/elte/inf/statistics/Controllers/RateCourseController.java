@@ -1,6 +1,8 @@
 package hu.elte.inf.statistics.Controllers;
 
+import hu.elte.inf.statistics.DAO.CoursesDAO;
 import hu.elte.inf.statistics.Helpers.DummyDatabase;
+import hu.elte.inf.statistics.Models.CourseReport;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,15 +23,15 @@ public class RateCourseController {
     @PostMapping("/rateCourse")
     public ModelAndView update(@RequestParam String courseName,
                                @RequestParam Integer difficulty,
-                               @RequestParam Integer grade,
-                               @RequestParam String feedback,
+                               @RequestParam Integer usefulness,
+                               @RequestParam String comment,
                                @RequestParam String button,
                                HttpServletRequest req) {
 
         if (button.equals("submit-bt")) {
-            DummyDatabase.getDatabase().addDifficulty(courseName, difficulty);
-            DummyDatabase.getDatabase().addGrade(courseName, grade);
-            DummyDatabase.getDatabase().addFeedback(courseName, feedback);
+            CourseReport courseReport = new CourseReport(courseName, comment, difficulty, usefulness);
+            CoursesDAO coursesDAO = new CoursesDAO();
+            coursesDAO.addCourseReport(courseReport);
             req.setAttribute("txt","Review has been submitted.");
         }
 
