@@ -1,77 +1,69 @@
 @import "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css";
 
-body{
-    margin: 0;
-    padding: 0;
-    /*background: url(../images/Background.jpg) no-repeat;*/
-    background-size: cover;
+body {
+    background-color: grey;
 }
 
-.loginbox{
-    width: 280px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white;
-}
-
-.loginbox h1{
-    float: left;
-    font-size: 40px;
-    border-bottom: 6px solid blueviolet;
-    mergin-bottom: 50px;
-    padding: 13px 0
-}
-
-.textbox{
+h1 {
+    color: darkred;
     width: 100%;
-    overflow: hidden;
-    font-size: 20px;
-    padding: 8px 0;
-    margin: 8px 0;
-    border-bottom: 1px solid darkred;
-}
-
-.textbox i{
-    width: 26px;
-    float: left;
+    margin: 0 auto;
+    background: gray;
     text-align: center;
 }
 
-.textbox input{
+* {
+    box-sizing: border-box;
+}
+
+input[type=text], input[type=number], select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+}
+
+label {
+    padding: 12px 12px 12px 0;
+    display: inline-block;
+}
+
+input[type=submit] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
     border: none;
-    outline: none;
-    background: none;
-    background-color: white;
-    color: black;
-    font-size: 18px;
-    width: 80%;
-    float: left;
-    margin: 0 10px;
-
-}
-
-.buton{
-    width: 100%;
-    background: blueviolet;
-    border: 2px solid blueviolet;
-    color: white;
-    padding: 5px;
-    font-size: 18px;
+    border-radius: 4px;
     cursor: pointer;
-    margin: 12px 0;
+    float: right;
 }
 
-.errorico{
-    position: absolute;
-    left: 48%;
-    color: red;
+button[type=submit]:hover {
+    background-color: #45a049;
 }
 
-.eror{
-    position:  center;
-    text-align: center;
-    color: red;
-    left: 48%;
+.container {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+
+.col-25 {
+    float: left;
+    width: 25%;
+    margin-top: 6px;
+}
+
+.col-75 {
+    float: left;
+    width: 75%;
+    margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
 }
