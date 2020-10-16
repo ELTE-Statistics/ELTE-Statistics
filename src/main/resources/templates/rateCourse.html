@@ -1,8 +1,64 @@
 <html>
 <head>
     <title>Rate Course</title>
+    <link rel="stylesheet" href="/css/RateStyle.css">
 </head>
 <body>
-    <h1>Rate Course</h1>
+<h1>Rate Course</h1>
+<div class="loginbox">
+
+    <div class="container">
+        <form action="/rateCourse" method="post">
+            <div class="row">
+                <div class="col-25">
+                    <label for="cname">Course Name</label>
+                </div>
+                <div class="col-75">
+                    <input type="text" id="cname" name="courseName" placeholder="Course name..">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    <label for="dffc">Difficulty</label>
+                </div>
+                <div class="col-75">
+                    <input type="number" id="dffc" name="difficulty" placeholder="Difficulty..">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    <label for="usfl">Usefulness</label>
+                </div>
+                <div class="col-75">
+                    <input type="number" id="usfl" name="usefulness" placeholder="Usefulness..">
+                </div>
+            </div>
+<!--            <div class="row">-->
+<!--                <div class="col-25">-->
+<!--                    <label for="country">Country</label>-->
+<!--                </div>-->
+<!--                <div class="col-75">-->
+<!--                    <select id="country" name="country">-->
+<!--                        <option value="australia">Australia</option>-->
+<!--                        <option value="canada">Canada</option>-->
+<!--                        <option value="usa">USA</option>-->
+<!--                    </select>-->
+<!--                </div>-->
+<!--            </div>-->
+            <div class="row">
+                <div class="col-25">
+                    <label for="cmnt">Comment</label>
+                </div>
+                <div class="col-75">
+                    <textarea id="cmnt" name="comment" placeholder="Write your comment here.." style="height:200px"></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <button type="submit" name="button" value="submit-bt">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+    <p th:text="${txt}"></p>
 </body>
 </html>
