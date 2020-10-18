@@ -1,0 +1,22 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Statistics</title>
+</head>
+<body>
+<h1>Statistics</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Course</th>
+        <th>Average difficulty</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:unless="${course_name.isEmpty()}" th:each="i : ${#numbers.sequence(0, course_name.size() - 1)}">
+        <td th:text="${course_name.get(i)}"></td>
+        <td th:text="${average_difficulty.get(i)}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
