@@ -23,10 +23,10 @@ input[type=text], input[type=number], select, textarea {
 }
 
 label {
-    padding: 12px 12px 12px 0;
+    padding: 12px 25px;
     display: inline-block;
 }
-
+/*
 input[type=submit] {
     background-color: #4CAF50;
     color: white;
@@ -36,27 +36,34 @@ input[type=submit] {
     cursor: pointer;
     float: right;
 }
-
+*/
 button[type=submit]:hover {
     background-color: #45a049;
 }
 
-.container {
+button[type=submit] {
+    position:absolute;
+    transition: .5s ease;
+    top: 95%;
+    left: 85%;
+}
+
+form {
     border-radius: 5px;
     background-color: #f2f2f2;
-    padding: 20px;
+    padding: 30px;
 }
 
 .col-25 {
     float: left;
-    width: 25%;
+    width: 20%;
     margin-top: 6px;
 }
 
 .col-75 {
     float: left;
-    width: 75%;
-    margin-top: 6px;
+    width: 70%;
+    margin: 6px;
 }
 
 /* Clear floats after the columns */

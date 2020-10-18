@@ -5,9 +5,6 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>ELTE-Statistics</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="Free HTML5 Website Template by freehtml5.co" />
-	<meta name="keywords" content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
-	<meta name="author" content="freehtml5.co" />
 
 	<!-- Facebook and Twitter integration -->
 	<meta property="og:title" content=""/>
@@ -203,6 +200,7 @@
 	</div>
 	<div class="loginbox">
 -->
+	<div class="loginbox">
 		<div class="container">
 			<form action="/rateCourse" method="post">
 				<div class="row">
@@ -210,7 +208,7 @@
 						<label for="cname">Course Name</label>
 					</div>
 					<div class="col-75">
-						<input type="text" id="cname" name="courseName" placeholder="Course name..">
+						<input type="text" id="cname" name="courseName" placeholder="Course name">
 					</div>
 				</div>
 				<div class="row">
@@ -218,7 +216,7 @@
 						<label for="dffc">Difficulty</label>
 					</div>
 					<div class="col-75">
-						<input type="number" id="dffc" name="difficulty" placeholder="Difficulty..">
+						<input type="number" id="dffc" name="difficulty" placeholder="Difficulty" min="1" max="5">
 					</div>
 				</div>
 				<div class="row">
@@ -226,7 +224,7 @@
 						<label for="usfl">Usefulness</label>
 					</div>
 					<div class="col-75">
-						<input type="number" id="usfl" name="usefulness" placeholder="Usefulness..">
+						<input type="number" id="usfl" name="usefulness" placeholder="Usefulness" min="1" max="5">
 					</div>
 				</div>
 				<div class="row">
@@ -234,7 +232,7 @@
 						<label for="cmnt">Comment</label>
 					</div>
 					<div class="col-75">
-						<textarea id="cmnt" name="comment" placeholder="Write your comment here.." style="height:200px"></textarea>
+						<textarea id="cmnt" name="comment" placeholder="Write your comment here" style="height:200px"></textarea>
 					</div>
 				</div>
 				<div class="row">
@@ -243,6 +241,7 @@
 			</form>
 		</div>
 	</div>
+</div>
 	<p th:text="${txt}"></p>
 
 <!--	<div id="fh5co-register" style="background-image: url(images/img_bg_2.jpg);">-->
