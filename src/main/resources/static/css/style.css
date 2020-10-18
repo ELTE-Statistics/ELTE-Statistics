@@ -5,17 +5,12 @@
   font-weight: normal;
   font-style: normal;
 }
-/* =======================================================
-*
-* 	Template Style 
-*
-* ======================================================= */
+
 body {
   font-family: "Source Sans Pro", Arial, sans-serif;
   font-weight: 400;
   font-size: 16px;
   line-height: 1.7;
-  color: #828282;
   background: #fff;
 }
 
@@ -179,7 +174,8 @@ h1, h2, h3, h4, h5, h6, figure {
   font-weight: 300;
 }
 .fh5co-nav ul li a {
-  font-size: 16px;
+  font-size: 18px;
+  font-weight: 400;
   padding: 30px 15px;
   color: rgba(0, 0, 0, 0.9);
   -webkit-transition: 0.5s;
@@ -254,7 +250,7 @@ h1, h2, h3, h4, h5, h6, figure {
   color: #fff;
 }
 .fh5co-nav ul li.btn-cta a span {
-  background: #2d6cdf;
+  background: #349eeb;
   padding: 4px 10px;
   display: -moz-inline-stack;
   display: inline-block;
@@ -274,7 +270,7 @@ h1, h2, h3, h4, h5, h6, figure {
   box-shadow: 0px 14px 20px -9px rgba(0, 0, 0, 0.75);
 }
 .fh5co-nav ul li.active > a {
-  font-weight: 400;
+  font-weight: 800;
 }
 
 #fh5co-hero {
@@ -408,7 +404,7 @@ h1, h2, h3, h4, h5, h6, figure {
 #fh5co-staff,
 #fh5co-contact,
 #fh5co-footer {
-  padding: 7em 0;
+  padding: 2em 0;
   clear: both;
 }
 @media screen and (max-width: 768px) {
@@ -423,7 +419,7 @@ h1, h2, h3, h4, h5, h6, figure {
   #fh5co-staff,
   #fh5co-contact,
   #fh5co-footer {
-    padding: 3em 0;
+    padding: 2em 0;
   }
 }
 
@@ -438,7 +434,7 @@ h1, h2, h3, h4, h5, h6, figure {
 }
 .services h3 {
   font-size: 18px;
-  font-weight: 400;
+  font-weight: 300;
 }
 .services h3 a {
   color: #000;
@@ -495,7 +491,7 @@ h1, h2, h3, h4, h5, h6, figure {
   left: 0;
   right: 0;
   content: '';
-  background: rgba(0, 0, 0, 0.5);
+  /*background: rgba(0, 0, 0, 0.5);*/
 }
 .fh5co-counters .counter-wrap {
   border: 1px solid red !important;
@@ -1141,7 +1137,7 @@ h1, h2, h3, h4, h5, h6, figure {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.85);
+  /*background: rgba(0, 0, 0, 0.85);*/
   -webkit-transition: 0.5s;
   -o-transition: 0.5s;
   transition: 0.5s;
@@ -1162,9 +1158,11 @@ h1, h2, h3, h4, h5, h6, figure {
 #fh5co-footer .fh5co-footer-links li a:hover {
   text-decoration: underline;
 }
+/*
 #fh5co-footer .fh5co-widget {
   margin-bottom: 30px;
-}
+}*/
+
 @media screen and (max-width: 768px) {
   #fh5co-footer .fh5co-widget {
     text-align: left;

@@ -200,46 +200,46 @@
 	</div>
 	<div class="loginbox">
 -->
-	<div class="loginbox">
-		<div class="container">
-			<form action="/rateCourse" method="post">
-				<div class="row">
-					<div class="col-25">
-						<label for="cname">Course Name</label>
-					</div>
-					<div class="col-75">
-						<input type="text" id="cname" name="courseName" placeholder="Course name">
-					</div>
+<div class="loginbox">
+	<div class="container">
+		<form action="/rateCourse" method="post">
+			<legend>Rate a course</legend>
+			<div class="row">
+				<div class="col-25">
+					<label for="cname">Course Name</label>
 				</div>
-				<div class="row">
-					<div class="col-25">
-						<label for="dffc">Difficulty</label>
-					</div>
-					<div class="col-75">
-						<input type="number" id="dffc" name="difficulty" placeholder="Difficulty" min="1" max="5">
-					</div>
+				<div class="col-75">
+					<input type="text" id="cname" name="courseName" placeholder="Course name">
 				</div>
-				<div class="row">
-					<div class="col-25">
-						<label for="usfl">Usefulness</label>
-					</div>
-					<div class="col-75">
-						<input type="number" id="usfl" name="usefulness" placeholder="Usefulness" min="1" max="5">
-					</div>
+			</div>
+			<div class="row">
+				<div class="col-25">
+					<label for="dffc">Difficulty</label>
 				</div>
-				<div class="row">
-					<div class="col-25">
-						<label for="cmnt">Comment</label>
-					</div>
-					<div class="col-75">
-						<textarea id="cmnt" name="comment" placeholder="Write your comment here" style="height:200px"></textarea>
-					</div>
+				<div class="col-75">
+					<input type="number" id="dffc" name="difficulty" placeholder="Difficulty" min="1" max="5">
 				</div>
-				<div class="row">
-					<button type="submit" name="button" value="submit-bt">Submit</button>
+			</div>
+			<div class="row">
+				<div class="col-25">
+					<label for="usfl">Usefulness</label>
 				</div>
-			</form>
-		</div>
+				<div class="col-75">
+					<input type="number" id="usfl" name="usefulness" placeholder="Usefulness" min="1" max="5">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-25">
+					<label for="cmnt">Comment</label>
+				</div>
+				<div class="col-75">
+					<textarea id="cmnt" name="comment" placeholder="Write your comment here" style="height:200px"></textarea>
+				</div>
+			</div>
+			<div class="row">
+				<button type="submit" name="button" value="submit-bt">Submit</button>
+			</div>
+		</form>
 	</div>
 </div>
 	<p th:text="${txt}"></p>
