@@ -11,9 +11,9 @@ public class DummyDatabase {
     class CourseData{
         public String name;
         public double averageDifficulty;
-        public double averageGrade;
+        public double averageUsefulness;
         public int entryDifficulty;
-        public int entryGrade;
+        public int entryUsefulness;
         public ArrayList<String> feedback = new ArrayList<>();
     }
 
@@ -48,15 +48,15 @@ public class DummyDatabase {
         course.averageDifficulty = currentDifficulty/course.entryDifficulty;
     }
 
-    public void addGrade(String courseName, int grade){
+    public void addUsefulness(String courseName, int usefulness){
         if(!data.containsKey(courseName)){
             createNewCourse(courseName);
         }
         CourseData course = data.get(courseName);
-        double currentGrade = course.averageGrade * course.entryGrade;
-        currentGrade += grade;
-        course.entryGrade++;
-        course.averageGrade = currentGrade/course.entryGrade;
+        double currentUsefulness = course.averageUsefulness * course.entryUsefulness;
+        currentUsefulness += usefulness;
+        course.entryUsefulness++;
+        course.averageUsefulness = currentUsefulness/course.entryUsefulness;
     }
 
     public void addFeedback(String courseName, String comment){
@@ -78,11 +78,11 @@ public class DummyDatabase {
         return course.averageDifficulty;
     }
 
-    public double getAverageGrade(String courseName){
+    public double getAverageUsefulness(String courseName){
         if(data.containsKey(courseName))
             return -1.0;
         CourseData course = data.get(courseName);
-        return course.averageGrade;
+        return course.averageUsefulness;
     }
 
     ArrayList<String> getFeedback(String courseName){
