@@ -9,12 +9,14 @@
     <tr>
         <th>Course</th>
         <th>Average difficulty</th>
+        <th>Average usefulness</th>
     </tr>
     </thead>
     <tbody>
-    <tr th:unless="${course_name.isEmpty()}" th:each="i : ${#numbers.sequence(0, course_name.size() - 1)}">
-        <td th:text="${course_name.get(i)}"></td>
-        <td th:text="${average_difficulty.get(i)}"></td>
+    <tr th:each="course : ${courses}">
+        <td th:text="${course.getName()}"></td>
+        <td th:text="${course.getAverageDifficulty()}"></td>
+        <td th:text="${course.getAverageUsefulness()}"></td>
     </tr>
     </tbody>
 </table>

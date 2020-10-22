@@ -8,14 +8,15 @@ import java.util.List;
 
 public class CoursesDAO {
 
-    DummyDatabase database;
+    private final DummyDatabase database;
 
     public CoursesDAO() {
-        database = DummyDatabase.getDatabase();
+        this.database = DummyDatabase.getDatabase();
     }
 
     public boolean addCourseReport(CourseReport report) {
-        return false;
+        this.database.addReport(report);
+        return true;
     }
 
     public boolean addCourse(Course course) {
@@ -35,10 +36,10 @@ public class CoursesDAO {
     }
 
     public List<Course> getAll() {
-        return null;
+        return this.database.getAll();
     }
 
-    public boolean removeALl() {
+    public boolean removeAll() {
         return false;
     }
 }
