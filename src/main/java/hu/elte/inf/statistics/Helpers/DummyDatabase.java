@@ -1,97 +1,57 @@
 package hu.elte.inf.statistics.Helpers;
 
+import hu.elte.inf.statistics.Models.Course;
+import hu.elte.inf.statistics.Models.CourseReport;
+
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
-import java.util.Set;
+import java.util.List;
 
 public class DummyDatabase {
-
-
-    class CourseData{
-        public String name;
-        public double averageDifficulty;
-        public double averageUsefulness;
-        public int entryDifficulty;
-        public int entryUsefulness;
-        public ArrayList<String> feedback = new ArrayList<>();
-    }
-
-    private HashMap<String, CourseData> data = new HashMap<>();
+    private final HashMap<String, Course> data = new HashMap<>();
 
     private static DummyDatabase database;
+
     public static DummyDatabase getDatabase() {
-        if(database == null)
+        if (database == null)
             database = new DummyDatabase();
         return database;
     }
 
     private DummyDatabase() {
-        this.data = new HashMap<>();
     }
 
-    public void createNewCourse(String courseName){
-        CourseData course = new CourseData();
-        course.name = courseName;
-        data.put(courseName, course);
+    public void createNewCourse(String courseName) {
+        this.data.put(courseName, new Course(courseName));
     }
 
-
-    public void addDifficulty(String courseName, int difficulty){
-        if(!data.containsKey(courseName)){
-            createNewCourse(courseName);
+    public void addReport(CourseReport report) {
+        if (!this.data.containsKey(report.getCourseName())) {
+            createNewCourse(report.getCourseName());
         }
-        CourseData course = data.get(courseName);
-        double currentDifficulty = course.averageDifficulty * course.entryDifficulty;
-        currentDifficulty += difficulty;
-        course.entryDifficulty++;
-        course.averageDifficulty = currentDifficulty/course.entryDifficulty;
+        this.data.get(report.getCourseName()).addReport(report);
     }
 
-    public void addUsefulness(String courseName, int usefulness){
-        if(!data.containsKey(courseName)){
-            createNewCourse(courseName);
-        }
-        CourseData course = data.get(courseName);
-        double currentUsefulness = course.averageUsefulness * course.entryUsefulness;
-        currentUsefulness += usefulness;
-        course.entryUsefulness++;
-        course.averageUsefulness = currentUsefulness/course.entryUsefulness;
+    public List<Course> getAll() {
+        return new ArrayList<>(this.data.values());
     }
 
-    public void addFeedback(String courseName, String comment){
-        if(!data.containsKey(courseName)){
-            createNewCourse(courseName);
-        }
-        CourseData course = data.get(courseName);
-        course.feedback.add(comment);
-    }
-
-    public Set<String> getCourseNames() {
-        return Collections.unmodifiableSet(this.data.keySet());
-    }
-
-    public double getAverageDifficulty(String courseName){
-        if(data.containsKey(courseName))
+    public double getAverageDifficulty(String courseName) {
+        if (data.containsKey(courseName))
             return -1.0;
-        CourseData course = data.get(courseName);
-        return course.averageDifficulty;
+        return this.data.get(courseName).getAverageDifficulty();
     }
 
-    public double getAverageUsefulness(String courseName){
-        if(data.containsKey(courseName))
+    public double getAverageUsefulness(String courseName) {
+        if (data.containsKey(courseName))
             return -1.0;
-        CourseData course = data.get(courseName);
-        return course.averageUsefulness;
+        return this.data.get(courseName).getAverageUsefulness();
     }
 
-    ArrayList<String> getFeedback(String courseName){
-        if(data.containsKey(courseName))
+    ArrayList<String> getFeedback(String courseName) {
+        if (data.containsKey(courseName))
             return null;
-        CourseData course = data.get(courseName);
-        return course.feedback;
+        return this.data.get(courseName).getComments();
     }
-
-
 
 }
