@@ -3,7 +3,6 @@ package hu.elte.inf.statistics;
 import hu.elte.inf.statistics.Models.Course;
 import hu.elte.inf.statistics.Models.CourseReport;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -51,7 +50,7 @@ public class CourseTests {
         c.addReport(new CourseReport("Test", "Some Comment", 5, 0));
         assertEquals(5.5,c.getAverageDifficulty());
         assertEquals(2,c.getDifficultyDataCount());
-        assertEquals(10,c.getAverageUsefulness());
+        assertEquals(5,c.getAverageUsefulness());
         assertEquals(2,c.getUsefulnessDataCount());
         assertEquals(2,c.getComments().size());
         assertTrue(c.getComments().contains("Some Comment"));
