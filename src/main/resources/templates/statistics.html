@@ -20,6 +20,10 @@
 	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,400" rel="stylesheet">
 
+
+	<!-- table.css	-->
+	<link rel="stylesheet" href="css/table.css">
+
 	<!-- Animate.css -->
 	<link rel="stylesheet" href="css/animate.css">
 	<!-- Icomoon Icon Fonts-->
@@ -111,6 +115,26 @@
 		  	</ul>
 	  	</div>
 	</aside>
+
+	<div class="table-container">
+		<caption>Statistics</caption>
+		<table>
+			<thead>
+			<tr>
+				<th>Course name</th>
+				<th>Average difficulty</th>
+				<th>Average usefulness</th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr th:each="course : ${courses}">
+				<td th:text="${course.getName()}"></td>
+				<td th:text="${course.getAverageDifficulty()}"></td>
+				<td th:text="${course.getAverageUsefulness()}"></td>
+			</tr>
+			</tbody>
+		</table>
+	</div>
 
 	<div id="fh5co-staff">
 		<div class="container">
@@ -240,28 +264,6 @@
 	</div>
 
 
-
-	<h1>Statistics</h1>
-	<table>
-		<thead>
-		<tr>
-			<th>Course</th>
-			<th>Average difficulty</th>
-			<th>Average usefulness</th>
-		</tr>
-		</thead>
-		<tbody>
-		<tr th:each="course : ${courses}">
-			<td th:text="${course.getName()}"></td>
-			<td th:text="${course.getAverageDifficulty()}"></td>
-			<td th:text="${course.getAverageUsefulness()}"></td>
-		</tr>
-		</tbody>
-	</table>
-
-
-
-
 	<footer id="fh5co-footer" role="contentinfo" style="background-image: url(images/img_bg_4.jpg);">
 		<div class="overlay"></div>
 		<div class="container">
@@ -321,7 +323,7 @@
 	<div class="gototop js-top">
 		<a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
 	</div>
-	
+
 	<!-- jQuery -->
 	<script src="js/jquery.min.js"></script>
 	<!-- jQuery Easing -->
