@@ -10,8 +10,8 @@ import java.util.List;
 
 public class CoursesDAO {
 
-    static final String JDBC_DRIVER = "org.h2.Driver";
-    static final String DB_URL = "jdbc:h2:file:C:\\Users\\waschbar\\Desktop\\Workspace\\ELTE-Statistics/data/courses/courses";
+    static final String CUR_DIR = System.getProperty("user.dir");
+    static final String DB_URL = "jdbc:h2:file:" + CUR_DIR + "/data/courses/courses";
 
     private final DummyDatabase database;
     private Connection conn = null;
