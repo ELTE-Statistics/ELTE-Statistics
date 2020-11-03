@@ -13,6 +13,14 @@ public class Course {
         this.name = name;
     }
 
+    public Course(String name, double averageDifficulty, int difficultyDataCount, double averageUsefulness, int usefulnessDataCount) {
+        this.name = name;
+        this.averageDifficulty = averageDifficulty;
+        this.difficultyDataCount = difficultyDataCount;
+        this.averageUsefulness = averageUsefulness;
+        this.usefulnessDataCount = usefulnessDataCount;
+    }
+
     public boolean addReport(CourseReport report) {
         if(!report.getCourseName().equals(this.name))
             return false;
