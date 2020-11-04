@@ -6,6 +6,7 @@ import hu.elte.inf.statistics.Models.CourseReport;
 
 import javax.xml.transform.Result;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class CoursesDAO {
@@ -46,7 +47,7 @@ public class CoursesDAO {
             st.setInt(3,course.getDifficultyDataCount());
             st.setDouble(4,course.getAverageUsefulness());
             st.setInt(5,course.getUsefulnessDataCount());
-            res = st.executeQuery();
+            st.executeUpdate();
 
             if(res == null || !res.next()) {
                 if(res != null)
@@ -79,7 +80,7 @@ public class CoursesDAO {
     }
 
     public boolean removeCourse(String courseName) {
-        // TODO
+
         return false;
     }
 
@@ -116,13 +117,58 @@ public class CoursesDAO {
     }
 
     public List<Course> getAll() {
-        // TODO
-        return this.database.getAll();
+        String query = "select * from courses";
+        PreparedStatement st = null;
+        List<Course> lst = new ArrayList<>();
+        ResultSet res = null;
+        try {
+            st = conn.prepareStatement(query);
+            res = st.executeQuery();
+        }catch (SQLException throwables){
+            throwables.printStackTrace();
+        }
+
+        String name = "";
+        double average_difficulty = 0.0;
+        double average_usefulness = 0.0;
+        int difficulty_count = 0;
+        int usefulness_count = 0;
+        try {
+            while(res.next()){
+                name = res.getString("course_name");
+                average_difficulty = res.getDouble("average_difficulty");
+                difficulty_count = res.getInt("difficulty_count");
+                average_usefulness = res.getDouble("average_usefulness");
+                usefulness_count = res.getInt("usefulness_count");
+                Course course = new Course(name,average_difficulty,difficulty_count,average_usefulness,usefulness_count);
+                lst.add(course);
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        try {
+            if(res != null)
+                res.close();
+            if(st != null)
+                st.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return lst;
     }
 
     public boolean removeAll() {
-        // TODO
-        return false;
+        String query = "delete from courses";
+        PreparedStatement st = null;
+        ResultSet res = null;
+        try {
+            st = conn.prepareStatement(query);
+            st.executeUpdate();
+        }catch (SQLException throwables){
+            throwables.printStackTrace();
+        }
+        return true;
     }
 
     public double getCourseAverageDifficulty(String courseName)  {
