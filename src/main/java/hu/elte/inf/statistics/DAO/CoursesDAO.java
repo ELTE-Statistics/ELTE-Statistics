@@ -165,7 +165,6 @@ public class CoursesDAO {
             st.setDouble(1, averageDifficulty);
             st.setString(2,courseName);
             st.executeUpdate();
-            System.err.println("EXECUTED");
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -180,30 +179,162 @@ public class CoursesDAO {
     }
 
     public double getCourseAverageUsefulness(String courseName)  {
-        // TODO
-        return 0;
+        String query = "select average_usefulness from courses where course_name = ?";
+        PreparedStatement st = null;
+        ResultSet res = null;
+        try {
+            st = conn.prepareStatement(query);
+            st.setString(1,courseName);
+            res = st.executeQuery();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        double val = -1;
+        try {
+            if(res.next())
+                val = res.getDouble(1);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        try {
+            if(res != null)
+                res.close();
+            if(st != null)
+                st.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return val;
     }
 
-    public void setCourseAverageUsefulness(String courseName, double averageDifficulty)  {
-        // TODO
+    public void setCourseAverageUsefulness(String courseName, double averageUsefulness)  {
+        String query = "update  courses set average_usefulness = ? where course_name = ?";
+        PreparedStatement st = null;
+        ResultSet res = null;
+        try {
+            st = conn.prepareStatement(query);
+            st.setDouble(1, averageUsefulness);
+            st.setString(2,courseName);
+            st.executeUpdate();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        if(st != null) {
+            try {
+                st.close();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
     }
 
     public int getCourseUsefulnessCount(String courseName)  {
-        // TODO
-        return 0;
+        String query = "select usefulness_count from courses where course_name = ?";
+        PreparedStatement st = null;
+        ResultSet res = null;
+        try {
+            st = conn.prepareStatement(query);
+            st.setString(1,courseName);
+            res = st.executeQuery();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        int val = -1;
+        try {
+            if(res.next())
+                val = res.getInt(1);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        try {
+            if(res != null)
+                res.close();
+            if(st != null)
+                st.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return val;
     }
 
-    public void setCourseUsefulnessCount(String courseName, double averageDifficulty)  {
-        // TODO
+    public void setCourseUsefulnessCount(String courseName, int usefulnessCount)  {
+        String query = "update  courses set usefulness_count = ? where course_name = ?";
+        PreparedStatement st = null;
+        ResultSet res = null;
+        try {
+            st = conn.prepareStatement(query);
+            st.setInt(1, usefulnessCount);
+            st.setString(2,courseName);
+            st.executeUpdate();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        if(st != null) {
+            try {
+                st.close();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
     }
 
     public int getCourseDifficultyCount(String courseName)  {
-        // TODO
-        return 0;
+        String query = "select difficulty_count from courses where course_name = ?";
+        PreparedStatement st = null;
+        ResultSet res = null;
+        try {
+            st = conn.prepareStatement(query);
+            st.setString(1,courseName);
+            res = st.executeQuery();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        int val = -1;
+        try {
+            if(res.next())
+                val = res.getInt(1);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        try {
+            if(res != null)
+                res.close();
+            if(st != null)
+                st.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return val;
     }
 
-    public void setCourseDifficultyCount(String courseName, double averageDifficulty)  {
-        // TODO
+    public void setCourseDifficultyCount(String courseName, int difficultyCount)  {
+        String query = "update  courses set difficulty_count = ? where course_name = ?";
+        PreparedStatement st = null;
+        ResultSet res = null;
+        try {
+            st = conn.prepareStatement(query);
+            st.setInt(1, difficultyCount);
+            st.setString(2,courseName);
+            st.executeUpdate();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        if(st != null) {
+            try {
+                st.close();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
     }
 
 }
