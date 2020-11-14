@@ -24,37 +24,181 @@ public class StaffDAO {
         }
     }
 
-    // TODO: Implement all functions
+
 
     public boolean addStaffReport(StaffReport report) {
+
+        if(!this.contains(report.getFullName()))
+            return false;
+
+        String cName = report.getFullName();
+        int communicationDataCount = this.getCommunicationDataCount(cName);
+        int teachingDataCount = this.getTeachingDataCount(cName);
+
+        this.setAverageCommunicationSkills(cName,
+                (this.getAverageCommunicationSkills(cName) * communicationDataCount + report.getCommunicationSkills()) / (communicationDataCount + 1));
+        this.setAverageTeachingQuality(cName,
+                (this.getAverageTeachingQuality(cName) * teachingDataCount + report.getTeachingQuality()) / (teachingDataCount + 1) );
+        this.setCommunicationDataCount(cName,
+                this.getCommunicationDataCount(cName) + 1);
+        this.setTeachingDataCount(cName,
+                this.getTeachingDataCount(cName) + 1);
+
         return true;
     }
 
     public boolean addStaff(Staff staff) {
+
+        if(this.contains(staff.getFullName()))
+            return false;
+
+        String query = "insert into STAFF values ( ?, ?, ?, ?, ? )";
+
+        try {
+            PreparedStatement st = null;
+            ResultSet res = null;
+
+            st = conn.prepareStatement(query);
+            st.setString(1,staff.getFullName());
+            st.setDouble(2,staff.getAverageCommunicationSkills());
+            st.setInt(3,staff.getCommunicationDataCount());
+            st.setDouble(4,staff.getAverageTeachingQuality());
+            st.setInt(5,staff.getTeachingDataCount());
+            st.executeUpdate();
+
+            if(res == null || !res.next()) {
+                if(res != null)
+                    res.close();
+                if(st != null)
+                    st.close();
+                return false;
+            }
+
+            if(res != null)
+                res.close();
+            if(st != null)
+                st.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
         return true;
     }
 
     public Staff getStaffByName(String name) {
-        return null;
+        if(!this.contains(name))
+            return null;
+        Staff staff = new Staff( name,
+                this.getAverageCommunicationSkills(name),
+                this.getCommunicationDataCount(name),
+                this.getAverageTeachingQuality(name),
+                this.getTeachingDataCount(name));
+        return staff;
     }
 
     public boolean removeStaff(String staffName) {
+        String query = "delete from staff where full_name = ?";
+        PreparedStatement st = null;
+        try {
+            st = conn.prepareStatement(query);
+            st.setString(1,staffName);
+            st.executeUpdate();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
         return false;
     }
 
     public boolean contains(String staffName) {
-       return false;
+        String query = "select * from staff where full_name = ?";
+        PreparedStatement st = null;
+        ResultSet res = null;
+        try {
+            st = conn.prepareStatement(query);
+            st.setString(1,staffName);
+            res = st.executeQuery();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        boolean exists = false;
+        try {
+            if(res.next())
+                exists = true;
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        try {
+            if(res != null)
+                res.close();
+            if(st != null)
+                st.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        return exists;
+
     }
 
     public List<Staff> getAll() {
-       return null;
+        String query = "select * from staff";
+        PreparedStatement st = null;
+        List<Staff> lst = new ArrayList<>();
+        ResultSet res = null;
+        try {
+            st = conn.prepareStatement(query);
+            res = st.executeQuery();
+        }catch (SQLException throwables){
+            throwables.printStackTrace();
+        }
+
+        String name = "";
+        double averageCommunicationSkills = 0.0;
+        double averageTeachingQuality = 0.0;
+        int communicationDataCount = 0;
+        int teachingDataCount = 0;
+        try {
+            while(res != null && res.next()){
+                name = res.getString("full_name");
+                averageCommunicationSkills = res.getDouble("average_communication");
+                communicationDataCount = res.getInt("communication_count");
+                averageTeachingQuality = res.getDouble("average_teaching");
+                teachingDataCount = res.getInt("teaching_count");
+                Staff staff = new Staff(name,averageCommunicationSkills,communicationDataCount,averageTeachingQuality,teachingDataCount);
+                lst.add(staff);
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        try {
+            if(res != null)
+                res.close();
+            if(st != null)
+                st.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return lst;
     }
 
     public boolean removeAll() {
+        String query = "delete from staff";
+        PreparedStatement st = null;
+        try {
+            st = conn.prepareStatement(query);
+            st.executeUpdate();
+        }catch (SQLException throwables){
+            throwables.printStackTrace();
+        }
         return true;
     }
 
-    // TODO: add getters and setters for each staff attribute.
+
+
+
     public int getCommunicationDataCount(String staffName){
         String query = "select communication_count from staff where full_name = ?";
         PreparedStatement st = null;
