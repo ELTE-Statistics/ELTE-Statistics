@@ -27,7 +27,22 @@ public class CoursesDAO {
     }
 
     public boolean addCourseReport(CourseReport report) {
-        // TODO
+        if(!this.contains(report.getCourseName()))
+            return false;
+
+        String cName = report.getCourseName();
+        int diffCount = this.getCourseDifficultyCount(cName);
+        int usflCount = this.getCourseUsefulnessCount(cName);
+
+        this.setCourseAverageDifficulty(cName,
+                (this.getCourseAverageDifficulty(cName) * diffCount + report.getDifficulty()) / (diffCount + 1));
+        this.setCourseAverageUsefulness(cName,
+                (this.getCourseAverageUsefulness(cName) * usflCount + report.getUsefulness()) / (usflCount + 1) );
+        this.setCourseDifficultyCount(cName,
+                this.getCourseDifficultyCount(cName) + 1);
+        this.setCourseUsefulnessCount(cName,
+                this.getCourseUsefulnessCount(cName) + 1);
+
         return true;
     }
 
@@ -80,7 +95,15 @@ public class CoursesDAO {
     }
 
     public boolean removeCourse(String courseName) {
-
+        String query = "delete from courses where course_name = ?";
+        PreparedStatement st = null;
+        try {
+            st = conn.prepareStatement(query);
+            st.setString(1,courseName);
+            st.executeUpdate();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
         return false;
     }
 
@@ -134,7 +157,7 @@ public class CoursesDAO {
         int difficulty_count = 0;
         int usefulness_count = 0;
         try {
-            while(res.next()){
+            while(res != null && res.next()){
                 name = res.getString("course_name");
                 average_difficulty = res.getDouble("average_difficulty");
                 difficulty_count = res.getInt("difficulty_count");
@@ -161,7 +184,6 @@ public class CoursesDAO {
     public boolean removeAll() {
         String query = "delete from courses";
         PreparedStatement st = null;
-        ResultSet res = null;
         try {
             st = conn.prepareStatement(query);
             st.executeUpdate();
