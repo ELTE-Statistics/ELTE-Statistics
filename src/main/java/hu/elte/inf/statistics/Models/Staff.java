@@ -38,28 +38,27 @@ public class Staff {
         return true;
     }
 
-    public String getName() {
+    public String getFullName() {
         return fullName;
     }
 
-    public double getAverageDifficulty() {
+    public double getAverageCommunicationSkills() {
         return averageCommunicationSkills;
     }
 
-    public double getAverageUsefulness() {
+    public double getAverageTeachingQuality() {
         return averageTeachingQuality;
     }
 
-    public int getDifficultyDataCount() {
+    public int getCommunicationDataCount() {
         return communicationDataCount;
     }
 
-    public int getUsefulnessDataCount() {
+    public int getTeachingDataCount() {
         return teachingDataCount;
     }
 
     public ArrayList<String> getComments() {
         return comments;
     }
-
 }

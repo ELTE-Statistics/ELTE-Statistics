@@ -14,7 +14,6 @@ public class CoursesDAO {
     static final String CUR_DIR = System.getProperty("user.dir");
     static final String DB_URL = "jdbc:h2:file:" + CUR_DIR + "/data/courses/courses";
 
-    private final DummyDatabase database;
     private Connection conn = null;
 
     public CoursesDAO() {
@@ -23,7 +22,6 @@ public class CoursesDAO {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        this.database = DummyDatabase.getDatabase();
     }
 
     public boolean addCourseReport(CourseReport report) {
