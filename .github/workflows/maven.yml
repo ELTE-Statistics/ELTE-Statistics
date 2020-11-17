@@ -29,4 +29,4 @@ jobs:
         path: staging
         
     - name: Spotbugs check
-    run: mvn spotbugs:check
+      run: mvn spotbugs:check
