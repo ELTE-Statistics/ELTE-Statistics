@@ -8,7 +8,9 @@ import hu.elte.inf.statistics.Models.StaffReport;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * Data access object for Staff
+ */
 public class StaffDAO {
 
     static final String CUR_DIR = System.getProperty("user.dir");
@@ -16,6 +18,9 @@ public class StaffDAO {
 
     private Connection conn = null;
 
+    /**
+     * Constructor of StaffDAO
+     */
     public StaffDAO() {
         try {
             this.conn = DriverManager.getConnection(DB_URL);
@@ -25,7 +30,11 @@ public class StaffDAO {
     }
 
 
-
+    /**
+     * adds report i
+     * @param report
+     * @return false if database contains report, true otherwise
+     */
     public boolean addStaffReport(StaffReport report) {
 
         if(!this.contains(report.getFullName()))
@@ -47,6 +56,11 @@ public class StaffDAO {
         return true;
     }
 
+    /**
+     * Adds Staff in database
+     * @param staff
+     * @return true if database doesn't contain given staff already, false otherwise
+     */
     public boolean addStaff(Staff staff) {
 
         if(this.contains(staff.getFullName()))
@@ -85,6 +99,11 @@ public class StaffDAO {
         return true;
     }
 
+    /**
+     * @param name
+     * @return staff if database contains staff with given name,
+     * null otherwise
+     */
     public Staff getStaffByName(String name) {
         if(!this.contains(name))
             return null;
@@ -96,7 +115,14 @@ public class StaffDAO {
         return staff;
     }
 
+    /**
+     * removes staff if database contains it
+     * @param staffName
+     * @return true if deletion is successful, false otherwise
+     */
     public boolean removeStaff(String staffName) {
+        if(!this.contains(staffName))
+            return false;
         String query = "delete from staff where full_name = ?";
         PreparedStatement st = null;
         try {
@@ -109,6 +135,11 @@ public class StaffDAO {
         return false;
     }
 
+    /**
+     * @param staffName
+     * @return true if database contains given staff,
+     * false otherwise
+     */
     public boolean contains(String staffName) {
         String query = "select * from staff where full_name = ?";
         PreparedStatement st = null;
@@ -142,6 +173,9 @@ public class StaffDAO {
 
     }
 
+    /**
+     * @return List of staff from database
+     */
     public List<Staff> getAll() {
         String query = "select * from staff";
         PreparedStatement st = null;
@@ -184,6 +218,10 @@ public class StaffDAO {
         return lst;
     }
 
+    /**
+     * removes all the staffs from the database
+     * @return true if deletion is successful
+     */
     public boolean removeAll() {
         String query = "delete from staff";
         PreparedStatement st = null;
@@ -197,8 +235,10 @@ public class StaffDAO {
     }
 
 
-
-
+    /**
+     * @param staffName
+     * @return communication data amount
+     */
     public int getCommunicationDataCount(String staffName){
         String query = "select communication_count from staff where full_name = ?";
         PreparedStatement st = null;
@@ -229,6 +269,12 @@ public class StaffDAO {
         }
         return val;
     }
+
+    /**
+     * Setter for communication Data amount
+     * @param staffName
+     * @param communicationData
+     */
     public void setCommunicationDataCount(String staffName, int communicationData){
         String query = "update  staff set communication_count = ? where full_name = ?";
         PreparedStatement st = null;
@@ -252,6 +298,10 @@ public class StaffDAO {
     }
 
 
+    /**
+     * @param staffName
+     * @return teaching data amount
+     */
     public int getTeachingDataCount(String staffName){
         String query = "select teaching_count from staff where full_name = ?";
         PreparedStatement st = null;
@@ -283,6 +333,11 @@ public class StaffDAO {
         return val;
     }
 
+    /**
+     * Setter for teaching data amount
+     * @param staffName
+     * @param teachingData
+     */
     public void setTeachingDataCount(String staffName, int teachingData){
         String query = "update  staff set teaching_count = ? where full_name = ?";
         PreparedStatement st = null;
@@ -306,6 +361,10 @@ public class StaffDAO {
     }
 
 
+    /**
+     * @param staffName
+     * @return average level of communication skills
+     */
     public double getAverageCommunicationSkills(String staffName){
         String query = "select average_communication from staff where full_name = ?";
         PreparedStatement st = null;
@@ -337,6 +396,11 @@ public class StaffDAO {
         return val;
     }
 
+    /**
+     * Setter for average communication skills
+     * @param staffName
+     * @param averageCommunicationSkills
+     */
     public void setAverageCommunicationSkills(String staffName, double averageCommunicationSkills){
         String query = "update  staff set average_communication = ? where full_name = ?";
         PreparedStatement st = null;
@@ -360,6 +424,10 @@ public class StaffDAO {
     }
 
 
+    /**
+     * @param staffName
+     * @return average level of teaching quality
+     */
     public double getAverageTeachingQuality(String staffName){
         String query = "select average_teaching from staff where full_name = ?";
         PreparedStatement st = null;
@@ -391,6 +459,11 @@ public class StaffDAO {
         return val;
     }
 
+    /**
+     * Setter for average level of teaching quality
+     * @param staffName
+     * @param averageTeachingQuality
+     */
     public void setAverageTeachingQuality(String staffName, double averageTeachingQuality){
         String query = "update  staff set average_teaching = ? where full_name = ?";
         PreparedStatement st = null;

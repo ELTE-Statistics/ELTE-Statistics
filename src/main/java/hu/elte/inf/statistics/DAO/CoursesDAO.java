@@ -9,6 +9,9 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Data access object for Course
+ */
 public class CoursesDAO {
 
     static final String CUR_DIR = System.getProperty("user.dir");
@@ -16,6 +19,9 @@ public class CoursesDAO {
 
     private Connection conn = null;
 
+    /**
+     * Constructor of CoursesDAO
+     */
     public CoursesDAO() {
         try {
             this.conn = DriverManager.getConnection(DB_URL);
@@ -24,6 +30,12 @@ public class CoursesDAO {
         }
     }
 
+
+    /**
+     * Adds course Report
+     * @param report
+     * @return false if database contains report, true otherwise
+     */
     public boolean addCourseReport(CourseReport report) {
         if(!this.contains(report.getCourseName()))
             return false;
@@ -44,6 +56,11 @@ public class CoursesDAO {
         return true;
     }
 
+    /**
+     * Adds course in database
+     * @param course
+     * @return true if database doesn't contain given course already, false otherwise
+     */
     public boolean addCourse(Course course) {
         if(this.contains(course.getName()))
             return false;
@@ -81,6 +98,11 @@ public class CoursesDAO {
         return true;
     }
 
+    /**
+     * @param name
+     * @return Course if database contains course with
+     * given name, null otherwise
+     */
     public Course getCourseByName(String name) {
         if(!this.contains(name))
             return null;
@@ -92,7 +114,14 @@ public class CoursesDAO {
         return cr;
     }
 
+    /**
+     * removes course if database contains it
+     * @param courseName
+     * @return true if database contains given course false otherwise
+     */
     public boolean removeCourse(String courseName) {
+        if(!this.contains(courseName))
+            return false;
         String query = "delete from courses where course_name = ?";
         PreparedStatement st = null;
         try {
@@ -105,6 +134,11 @@ public class CoursesDAO {
         return false;
     }
 
+    /**
+     * @param courseName
+     * @return true if database contains given course
+     * false otherwise
+     */
     public boolean contains(String courseName) {
         String query = "select * from courses where course_name = ?";
         PreparedStatement st = null;
@@ -137,6 +171,9 @@ public class CoursesDAO {
         return exists;
     }
 
+    /**
+     * @return List of courses from database
+     */
     public List<Course> getAll() {
         String query = "select * from courses";
         PreparedStatement st = null;
@@ -179,6 +216,10 @@ public class CoursesDAO {
         return lst;
     }
 
+    /**
+     * removes all the courses from the database
+     * @return true if deletion is successful
+     */
     public boolean removeAll() {
         String query = "delete from courses";
         PreparedStatement st = null;
@@ -191,6 +232,10 @@ public class CoursesDAO {
         return true;
     }
 
+    /**
+     * @param courseName
+     * @return course average level of difficulty
+     */
     public double getCourseAverageDifficulty(String courseName)  {
         String query = "select average_difficulty from courses where course_name = ?";
         PreparedStatement st = null;
@@ -222,6 +267,11 @@ public class CoursesDAO {
         return val;
     }
 
+    /**
+     * @param courseName
+     * @param averageDifficulty
+     * Setter for course average difficulty
+     */
     public void setCourseAverageDifficulty(String courseName, double averageDifficulty)  {
         String query = "update  courses set average_difficulty = ? where course_name = ?";
         PreparedStatement st = null;
@@ -244,6 +294,10 @@ public class CoursesDAO {
         }
     }
 
+    /**
+     * @param courseName
+     * @return course average level of usefulness
+     */
     public double getCourseAverageUsefulness(String courseName)  {
         String query = "select average_usefulness from courses where course_name = ?";
         PreparedStatement st = null;
@@ -275,6 +329,11 @@ public class CoursesDAO {
         return val;
     }
 
+    /**
+     * Setter for course average level of usefulness
+     * @param courseName
+     * @param averageUsefulness
+     */
     public void setCourseAverageUsefulness(String courseName, double averageUsefulness)  {
         String query = "update  courses set average_usefulness = ? where course_name = ?";
         PreparedStatement st = null;
@@ -297,6 +356,10 @@ public class CoursesDAO {
         }
     }
 
+    /**
+     * @param courseName
+     * @return course level of usefulness
+     */
     public int getCourseUsefulnessCount(String courseName)  {
         String query = "select usefulness_count from courses where course_name = ?";
         PreparedStatement st = null;
@@ -328,6 +391,11 @@ public class CoursesDAO {
         return val;
     }
 
+    /**
+     * Setter for course usefulness level
+     * @param courseName
+     * @param usefulnessCount
+     */
     public void setCourseUsefulnessCount(String courseName, int usefulnessCount)  {
         String query = "update  courses set usefulness_count = ? where course_name = ?";
         PreparedStatement st = null;
@@ -350,6 +418,10 @@ public class CoursesDAO {
         }
     }
 
+    /**
+     * @param courseName
+     * @return  difficulty level of course
+     */
     public int getCourseDifficultyCount(String courseName)  {
         String query = "select difficulty_count from courses where course_name = ?";
         PreparedStatement st = null;
@@ -381,6 +453,11 @@ public class CoursesDAO {
         return val;
     }
 
+    /**
+     * Setter for course difficulty level
+     * @param courseName
+     * @param difficultyCount
+     */
     public void setCourseDifficultyCount(String courseName, int difficultyCount)  {
         String query = "update  courses set difficulty_count = ? where course_name = ?";
         PreparedStatement st = null;
