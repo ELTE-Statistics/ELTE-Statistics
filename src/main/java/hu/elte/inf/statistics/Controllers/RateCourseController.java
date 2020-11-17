@@ -11,15 +11,32 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 
+/**
+ * Course controller
+ */
 @Controller
 public class RateCourseController {
 
+    /**
+     * @param req
+     * @return modelAndView object
+     */
     @GetMapping("/rateCourse")
     public ModelAndView render(HttpServletRequest req) {
         ModelAndView mv = new ModelAndView("rateCourse");
         return mv;
     }
 
+    /**
+     * updates modelAndView
+     * @param courseName
+     * @param difficulty
+     * @param usefulness
+     * @param comment
+     * @param button
+     * @param req
+     * @return modelAndView object
+     */
     @PostMapping("/rateCourse")
     public ModelAndView update(@RequestParam String courseName,
                                @RequestParam Integer difficulty,

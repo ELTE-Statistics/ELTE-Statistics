@@ -8,15 +8,28 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 
+/**
+ * Home page Controller
+ */
 @Controller
 public class HomeController {
 
+    /**
+     * @param req
+     * @return ModelAndView
+     */
     @GetMapping("/")
     public ModelAndView render(HttpServletRequest req) {
         ModelAndView mv = new ModelAndView("main");
         return mv;
     }
 
+    /**
+     * updates modelAndView
+     * @param req
+     * @param button
+     * @return ModelAndView object
+     */
     @PostMapping("/")
     public ModelAndView update(HttpServletRequest req, @RequestParam String button) {
         if (button.equals("bt1")) {
