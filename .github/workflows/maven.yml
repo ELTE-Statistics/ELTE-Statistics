@@ -28,13 +28,5 @@ jobs:
         name: Package
         path: staging
         
-    spotbugs-sast:
-    dependencies:
-      - build
-    script:
-      - /analyzer run -compile=false
-    variables:
-      MAVEN_REPO_PATH: ./.m2/repository
-    artifacts:
-      reports:
-      sast: gl-sast-report.json
+    - name: Spotbugs check
+    run: mvn spotbugs:check
