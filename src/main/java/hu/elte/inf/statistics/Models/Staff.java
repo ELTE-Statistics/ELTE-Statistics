@@ -3,9 +3,8 @@ package hu.elte.inf.statistics.Models;
 import java.util.ArrayList;
 
 /**
- * Represents Staff Class
- * Staff includes: fullname,
- * information about : communication skills, teaching quality
+ * Represents Staff Class Staff includes: fullname, information about : communication skills,
+ * teaching quality
  */
 public class Staff {
 
@@ -14,10 +13,7 @@ public class Staff {
     private int communicationDataCount, teachingDataCount;
     private ArrayList<String> comments = new ArrayList<String>();
 
-    /**
-     * @param name
-     * Constructor of Staff with staff name
-     */
+    /** @param name Constructor of Staff with staff name */
     public Staff(String name) {
         this.fullName = name;
     }
@@ -27,10 +23,14 @@ public class Staff {
      * @param averageCommunicationSkills
      * @param communicationDataCount
      * @param averageTeachingQuality
-     * @param teachingDataCount
-     * constructor of Staff with five arguments
+     * @param teachingDataCount constructor of Staff with five arguments
      */
-    public Staff(String fullName, double averageCommunicationSkills, int communicationDataCount, double averageTeachingQuality, int teachingDataCount) {
+    public Staff(
+            String fullName,
+            double averageCommunicationSkills,
+            int communicationDataCount,
+            double averageTeachingQuality,
+            int teachingDataCount) {
         this.fullName = fullName;
         this.averageCommunicationSkills = averageCommunicationSkills;
         this.communicationDataCount = communicationDataCount;
@@ -43,15 +43,16 @@ public class Staff {
      * @return false if report doesn't match Staff, true otherwise
      */
     public boolean addReport(CourseReport report) {
-        if(!report.getCourseName().equals(this.fullName))
-            return false;
+        if (!report.getCourseName().equals(this.fullName)) return false;
 
-        averageCommunicationSkills = (averageCommunicationSkills * communicationDataCount + report.getDifficulty())
-                / (double) (communicationDataCount + 1);
+        averageCommunicationSkills =
+                (averageCommunicationSkills * communicationDataCount + report.getDifficulty())
+                        / (double) (communicationDataCount + 1);
         communicationDataCount += 1;
 
-        averageTeachingQuality = (averageTeachingQuality * teachingDataCount + report.getUsefulness())
-                / (double) (teachingDataCount + 1);
+        averageTeachingQuality =
+                (averageTeachingQuality * teachingDataCount + report.getUsefulness())
+                        / (double) (teachingDataCount + 1);
         teachingDataCount += 1;
 
         comments.add(report.getComment());
@@ -59,44 +60,32 @@ public class Staff {
         return true;
     }
 
-    /**
-     * @return staff fullname
-     */
+    /** @return staff fullname */
     public String getFullName() {
         return fullName;
     }
 
-    /**
-     * @return average level of communication skills
-     */
+    /** @return average level of communication skills */
     public double getAverageCommunicationSkills() {
         return averageCommunicationSkills;
     }
 
-    /**
-     * @return average level of teaching quality
-     */
+    /** @return average level of teaching quality */
     public double getAverageTeachingQuality() {
         return averageTeachingQuality;
     }
 
-    /**
-     * @return number of communication data
-     */
+    /** @return number of communication data */
     public int getCommunicationDataCount() {
         return communicationDataCount;
     }
 
-    /**
-     * @return number of teaching data
-     */
+    /** @return number of teaching data */
     public int getTeachingDataCount() {
         return teachingDataCount;
     }
 
-    /**
-     * @return arraylist that contains comments about Staff
-     */
+    /** @return arraylist that contains comments about Staff */
     public ArrayList<String> getComments() {
         return comments;
     }

@@ -1,7 +1,6 @@
 package hu.elte.inf.statistics.Controllers;
 
 import hu.elte.inf.statistics.DAO.CoursesDAO;
-import hu.elte.inf.statistics.Helpers.DummyDatabase;
 import hu.elte.inf.statistics.Models.CourseReport;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,9 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 
-/**
- * Course controller
- */
+/** Course controller */
 @Controller
 public class RateCourseController {
 
@@ -29,6 +26,7 @@ public class RateCourseController {
 
     /**
      * updates modelAndView
+     *
      * @param courseName
      * @param difficulty
      * @param usefulness
@@ -38,18 +36,20 @@ public class RateCourseController {
      * @return modelAndView object
      */
     @PostMapping("/rateCourse")
-    public ModelAndView update(@RequestParam String courseName,
-                               @RequestParam Integer difficulty,
-                               @RequestParam Integer usefulness,
-                               @RequestParam String comment,
-                               @RequestParam String button,
-                               HttpServletRequest req) {
+    public ModelAndView update(
+            @RequestParam String courseName,
+            @RequestParam Integer difficulty,
+            @RequestParam Integer usefulness,
+            @RequestParam String comment,
+            @RequestParam String button,
+            HttpServletRequest req) {
 
         if (button.equals("submit-bt")) {
-            CourseReport courseReport = new CourseReport(courseName, comment, difficulty, usefulness);
+            CourseReport courseReport =
+                    new CourseReport(courseName, comment, difficulty, usefulness);
             CoursesDAO coursesDAO = new CoursesDAO();
             coursesDAO.addCourseReport(courseReport);
-            req.setAttribute("txt","Review has been submitted.");
+            req.setAttribute("txt", "Review has been submitted.");
         }
 
         return new ModelAndView("rateCourse");

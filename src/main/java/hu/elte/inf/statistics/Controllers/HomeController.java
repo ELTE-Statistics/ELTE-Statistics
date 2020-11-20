@@ -8,9 +8,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 
-/**
- * Home page Controller
- */
+/** Home page Controller */
 @Controller
 public class HomeController {
 
@@ -26,6 +24,7 @@ public class HomeController {
 
     /**
      * updates modelAndView
+     *
      * @param req
      * @param button
      * @return ModelAndView object
@@ -38,5 +37,4 @@ public class HomeController {
             return new ModelAndView("redirect:rateCourse");
         }
     }
-
 }

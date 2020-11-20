@@ -13,13 +13,11 @@ public class DummyDatabase {
     private static DummyDatabase database;
 
     public static DummyDatabase getDatabase() {
-        if (database == null)
-            database = new DummyDatabase();
+        if (database == null) database = new DummyDatabase();
         return database;
     }
 
-    private DummyDatabase() {
-    }
+    private DummyDatabase() {}
 
     public void createNewCourse(String courseName) {
         this.data.put(courseName, new Course(courseName));
@@ -37,21 +35,17 @@ public class DummyDatabase {
     }
 
     public double getAverageDifficulty(String courseName) {
-        if (data.containsKey(courseName))
-            return -1.0;
+        if (data.containsKey(courseName)) return -1.0;
         return this.data.get(courseName).getAverageDifficulty();
     }
 
     public double getAverageUsefulness(String courseName) {
-        if (data.containsKey(courseName))
-            return -1.0;
+        if (data.containsKey(courseName)) return -1.0;
         return this.data.get(courseName).getAverageUsefulness();
     }
 
     ArrayList<String> getFeedback(String courseName) {
-        if (data.containsKey(courseName))
-            return null;
+        if (data.containsKey(courseName)) return null;
         return this.data.get(courseName).getComments();
     }
-
 }

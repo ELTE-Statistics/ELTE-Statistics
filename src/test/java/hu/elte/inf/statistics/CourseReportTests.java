@@ -16,12 +16,11 @@ public class CourseReportTests {
 
     @Test
     public void testReport() {
-        cr = new CourseReport("cName", "No Comment", 1,10);
+        cr = new CourseReport("cName", "No Comment", 1, 10);
         assertNotNull(cr);
         assertEquals("cName", cr.getCourseName());
         assertEquals("No Comment", cr.getComment());
         assertEquals(1, cr.getDifficulty());
         assertEquals(10, cr.getUsefulness());
     }
-
 }
