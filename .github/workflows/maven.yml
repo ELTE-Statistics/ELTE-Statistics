@@ -34,3 +34,7 @@ jobs:
       with:
         name: Package
         path: staging
+
+    - uses: axel-op/googlejavaformat-action@v3
+      with:
+        args: "--replace --aosp --skip-sorting-imports"
