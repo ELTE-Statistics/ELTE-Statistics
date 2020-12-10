@@ -21,8 +21,8 @@ public class StaffDAO {
             this.conn
                     .prepareStatement(
                             "create table if not exists staff (full_name varchar(64),"
-                                + " average_preparedness float, preparedness_count int,"
-                                + " average_helpfulness float, helpfulness_count int)")
+                                    + " average_preparedness float, preparedness_count int,"
+                                    + " average_helpfulness float, helpfulness_count int)")
                     .executeUpdate();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
