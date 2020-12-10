@@ -35,7 +35,8 @@ public class CoursesDAO {
         if (!this.contains(report.getCourseName())) {
             this.addCourse(new Course(cName, report.getDifficulty(), 1, report.getUsefulness(), 1));
             return true;
-        };
+        }
+        ;
 
         int diffCount = this.getCourseDifficultyCount(cName);
         int usflCount = this.getCourseUsefulnessCount(cName);

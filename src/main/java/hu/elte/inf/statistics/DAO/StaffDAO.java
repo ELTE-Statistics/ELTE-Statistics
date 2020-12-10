@@ -32,9 +32,11 @@ public class StaffDAO {
     public boolean addStaffReport(StaffReport report) {
         String cName = report.getFullName();
         if (!this.contains(report.getFullName())) {
-            this.addStaff(new Staff(cName, report.getPreparedness(), 1, report.getHelpfulness(), 1));
+            this.addStaff(
+                    new Staff(cName, report.getPreparedness(), 1, report.getHelpfulness(), 1));
             return true;
-        };
+        }
+        ;
 
         int preparednessDataCount = this.getPreparednessDataCount(cName);
         int helpfulnessDataCount = this.getHelpfulnessDataCount(cName);
@@ -46,8 +48,7 @@ public class StaffDAO {
                         / (preparednessDataCount + 1));
         this.setAverageHelpfulness(
                 cName,
-                (this.getAverageHelpfulness(cName) * helpfulnessDataCount
-                                + report.getHelpfulness())
+                (this.getAverageHelpfulness(cName) * helpfulnessDataCount + report.getHelpfulness())
                         / (helpfulnessDataCount + 1));
         this.setPreparednessDataCount(cName, this.getPreparednessDataCount(cName) + 1);
         this.setHelpfulnessDataCount(cName, this.getHelpfulnessDataCount(cName) + 1);

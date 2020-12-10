@@ -1,7 +1,8 @@
 package hu.elte.inf.statistics.Models;
 
 /**
- * Represent StaffReport Class Includes: name of report, comment, preparedness amount and helpfulness amount
+ * Represent StaffReport Class Includes: name of report, comment, preparedness amount and
+ * helpfulness amount
  */
 public class StaffReport {
 
@@ -17,8 +18,7 @@ public class StaffReport {
      * @param preparedness
      * @param helpfulness
      */
-    public StaffReport(
-            String fullName, String comment, int preparedness, int helpfulness) {
+    public StaffReport(String fullName, String comment, int preparedness, int helpfulness) {
         this.fullName = fullName;
         this.comment = comment;
         this.helpfulness = helpfulness;
