@@ -19,7 +19,12 @@ public class CoursesDAO {
     public CoursesDAO() {
         try {
             this.conn = DriverManager.getConnection(DB_URL);
-            this.conn.prepareStatement("create table if not exists courses (course_name varchar(64), average_difficulty float, difficulty_count int, average_usefulness float, usefulness_count int)").executeUpdate();
+            this.conn
+                    .prepareStatement(
+                            "create table if not exists courses (course_name varchar(64),"
+                                + " average_difficulty float, difficulty_count int,"
+                                + " average_usefulness float, usefulness_count int)")
+                    .executeUpdate();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
