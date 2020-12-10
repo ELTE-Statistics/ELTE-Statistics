@@ -118,7 +118,7 @@
 
 	<div class="table-container">
 		<table>
-			<caption>Statistics</caption>
+			<caption>Course statistics</caption>
 			<thead>
 			<tr>
 				<th>Course name</th>
@@ -131,6 +131,26 @@
 				<td th:text="${course.getName()}"></td>
 				<td th:text="${course.getAverageDifficulty()}"></td>
 				<td th:text="${course.getAverageUsefulness()}"></td>
+			</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<div class="table-container">
+		<table>
+			<caption>Professor statistics</caption>
+			<thead>
+			<tr>
+				<th>Full name</th>
+				<th>Average preparedness</th>
+				<th>Average helpfulness</th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr th:each="professor : ${professors}">
+				<td th:text="${professor.getFullName()}"></td>
+				<td th:text="${professor.getAveragePreparedness()}"></td>
+				<td th:text="${professor.getAverageHelpfulness()}"></td>
 			</tr>
 			</tbody>
 		</table>
