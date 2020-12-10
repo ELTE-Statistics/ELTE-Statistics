@@ -31,9 +31,12 @@ public class CoursesDAO {
      * @return false if database contains report, true otherwise
      */
     public boolean addCourseReport(CourseReport report) {
-        if (!this.contains(report.getCourseName())) return false;
-
         String cName = report.getCourseName();
+        if (!this.contains(report.getCourseName())) {
+            this.addCourse(new Course(cName, report.getDifficulty(), 1, report.getUsefulness(), 1));
+            return true;
+        };
+
         int diffCount = this.getCourseDifficultyCount(cName);
         int usflCount = this.getCourseUsefulnessCount(cName);
 

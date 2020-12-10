@@ -30,10 +30,12 @@ public class StaffDAO {
      * @return false if database contains report, true otherwise
      */
     public boolean addStaffReport(StaffReport report) {
-
-        if (!this.contains(report.getFullName())) return false;
-
         String cName = report.getFullName();
+        if (!this.contains(report.getFullName())) {
+            this.addStaff(new Staff(cName, report.getPreparedness(), 1, report.getHelpfulness(), 1));
+            return true;
+        };
+
         int preparednessDataCount = this.getPreparednessDataCount(cName);
         int helpfulnessDataCount = this.getHelpfulnessDataCount(cName);
 
