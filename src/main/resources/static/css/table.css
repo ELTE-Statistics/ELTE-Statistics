@@ -12,12 +12,12 @@ table, th, td {
 	align-items:center;
 	min-height:100vh;
 }
-
+/*
 th {
     background:#349eeb;
-}
+}*/
 
 .table-container caption {
-    color: pink;
+    color: #349eeb;
     text-align: center;
 }
