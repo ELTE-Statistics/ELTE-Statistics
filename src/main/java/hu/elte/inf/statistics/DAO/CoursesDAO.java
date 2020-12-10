@@ -11,7 +11,7 @@ import java.util.List;
 public class CoursesDAO {
 
     static final String CUR_DIR = System.getProperty("user.dir");
-    static final String DB_URL = "jdbc:h2:file:" + CUR_DIR + "/data/courses/courses";
+    static final String DB_URL = "jdbc:h2:file:" + CUR_DIR + "/data/courses";
 
     private Connection conn = null;
 
@@ -19,6 +19,7 @@ public class CoursesDAO {
     public CoursesDAO() {
         try {
             this.conn = DriverManager.getConnection(DB_URL);
+            this.conn.prepareStatement("create table if not exists courses (course_name varchar(64), average_difficulty float, difficulty_count int, average_usefulness float, usefulness_count int)").executeUpdate();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -36,7 +37,6 @@ public class CoursesDAO {
             this.addCourse(new Course(cName, report.getDifficulty(), 1, report.getUsefulness(), 1));
             return true;
         }
-        ;
 
         int diffCount = this.getCourseDifficultyCount(cName);
         int usflCount = this.getCourseUsefulnessCount(cName);

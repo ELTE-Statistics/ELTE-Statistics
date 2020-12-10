@@ -6,18 +6,19 @@ import hu.elte.inf.statistics.Models.StaffReport;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-/** Data access object for Professor */
+/** Data access object for Staff */
 public class StaffDAO {
 
     static final String CUR_DIR = System.getProperty("user.dir");
-    static final String DB_URL = "jdbc:h2:file:" + CUR_DIR + "/data/courses/courses";
+    static final String DB_URL = "jdbc:h2:file:" + CUR_DIR + "/data/staff";
 
     private Connection conn = null;
 
-    /** Constructor of ProfessorDAO */
+    /** Constructor of StaffDAO */
     public StaffDAO() {
         try {
             this.conn = DriverManager.getConnection(DB_URL);
+                this.conn.prepareStatement("create table if not exists staff (full_name varchar(64), average_preparedness float, preparedness_count int, average_helpfulness float, helpfulness_count int)").executeUpdate();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -29,14 +30,13 @@ public class StaffDAO {
      * @param report
      * @return false if database contains report, true otherwise
      */
-    public boolean addProfessorReport(StaffReport report) {
+    public boolean addStaffReport(StaffReport report) {
         String cName = report.getFullName();
         if (!this.contains(report.getFullName())) {
             this.addStaff(
                     new Staff(cName, report.getPreparedness(), 1, report.getHelpfulness(), 1));
             return true;
         }
-        ;
 
         int preparednessDataCount = this.getPreparednessDataCount(cName);
         int helpfulnessDataCount = this.getHelpfulnessDataCount(cName);
