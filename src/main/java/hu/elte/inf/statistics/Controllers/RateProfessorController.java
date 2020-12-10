@@ -27,9 +27,9 @@ public class RateProfessorController {
     /**
      * updates modelAndView
      *
-     * @param courseName
-     * @param difficulty
-     * @param usefulness
+     * @param professorName
+     * @param preparedness
+     * @param helpfulness
      * @param comment
      * @param button
      * @param req
@@ -37,16 +37,16 @@ public class RateProfessorController {
      */
     @PostMapping("/rateProfessor")
     public ModelAndView update(
-            @RequestParam String courseName,
-            @RequestParam Integer difficulty,
-            @RequestParam Integer usefulness,
+            @RequestParam String professorName,
+            @RequestParam Integer preparedness,
+            @RequestParam Integer helpfulness,
             @RequestParam String comment,
             @RequestParam String button,
             HttpServletRequest req) {
 
         if (button.equals("submit-bt")) {
             CourseReport courseReport =
-                    new CourseReport(courseName, comment, difficulty, usefulness);
+                    new CourseReport(professorName, comment, preparedness, helpfulness);
             CoursesDAO coursesDAO = new CoursesDAO();
             coursesDAO.addCourseReport(courseReport);
             req.setAttribute("txt", "Review has been submitted.");
