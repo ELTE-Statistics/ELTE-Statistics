@@ -1,0 +1,295 @@
+#node-5511 .field-name-field-hir-fokep,
+#node-5512 .field-name-field-hir-fokep
+ {
+	display: none;
+}
+
+#node-2025 .field-name-field-image,
+#node-5501 .field-name-field-image
+ {
+	display: none;
+}
+
+#node-5537 .of_dok,
+#node-5538 .of_dok,
+#node-5672 .of_dok,
+#node-5673 .of_dok
+ {
+	width: 49%;
+	display: inline-block;
+	text-align: center;
+	vertical-align: top;
+}
+
+#node-5537 img,
+#node-5538 img,
+#node-5672 img,
+#node-5673 img
+ {
+	width: 100%;
+}
+
+.page-node-921 #nyitva_mj {
+	color: #192b64 !important;
+	font-weight: bold;
+	font-size: 14px;
+	text-align: center;
+	font-style: normal;
+	padding: 4px;
+	border-top: none;
+	margin-top: -5px;
+	margin-bottom: 20px;
+}
+
+.page-node-4486 label {
+	width: auto;
+}
+
+.views-label-field-feltolto-konyvtar-et .views-label,
+.views-field-field-kurzus-idotartama .views-label,
+.views-field-field-kurzus-nyelve .views-label,
+.views-field-field-idopontok .views-label{
+	float: left;
+	margin-right: 4px;
+	font-weight: bold;
+}
+
+.page-kepzesek span.date-display-single {
+	display: inline-block;
+}
+
+.page-kepzesek .views-field-field-kep {
+	float: right;
+	margin-left: 5px;
+}
+
+.page-kepzesek .kepzes-utvonal a {
+	margin-top: 5px;
+	background-color: #1D6BB8;
+	padding: 2px 3px;
+	color: #fff;
+	margin-top: -10px;
+	display: inline-block;
+	border-radius: 3px;
+	float: right;
+}
+
+.page-kepzesek .kepzes-utvonal a:hover {
+	background-color: #192b64;
+}
+
+.page-kepzesek .field-name-field-kep {
+	clear: right;
+}
+
+.node-type-kepzes .clearfix:after {
+	clear: left !important;
+}
+
+.node-type-kepzes .submitted {
+	display: none;
+}
+
+.node-type-kepzes .field-name-body {
+	margin-top: 10px;
+}
+
+.node-type-kepzes #kepzes-jelentkezes {
+	margin: 0 auto;
+	width: 300px;
+	text-align: center;
+	background-color: #D2E7F9;
+	padding: 5px;
+	margin-top: 20px;
+	border-radius: 5px;
+}
+
+.node-type-kepzes #kepzes-jelentkezes h3 {
+	font-size: 22px;
+}
+
+.node-type-kepzes #kepzes-jelentkezes a {
+	display: inline-block;
+	padding: 0 20px;
+}
+
+/* Eötvös kiállítás */
+.page-node-5686 #eotvos100kep ,
+.page-node-5853 #eotvos100kep {
+	background-image: url('https://konyvtar.elte.hu/sites/default/files/eotvos100.png');
+	background-repeat: no-repeat;
+	background-position: center center;
+	height: 400px;
+	width: 100%;
+}
+
+.page-node-5853 #eotvos100kep {
+	background-image: url('https://konyvtar.elte.hu/sites/default/files/eotvos100en.jpg');
+	background-size: 100%;
+}
+
+.page-node-5686 #hetek,
+.page-node-5853 #hetek
+ {
+	width: 55%;
+	margin: 2%;
+	display: inline-block;
+	vertical-align: top;
+}
+
+.page-node-5686 #eotvos100reg,
+.page-node-5853 #eotvos100reg
+ {
+	width: 35%;
+	margin: 2%;
+	display: inline-block;
+	vertical-align: top;
+}
+
+.page-node-5686 .het table,
+.page-node-5686 .het, 
+.page-node-5686 input[type="text"], 
+.page-node-5686 input[type="email"], 
+.page-node-5686 input[type="number"], 
+.page-node-5686 textarea,
+.page-node-5853 .het table,
+.page-node-5853 .het, 
+.page-node-5853 input[type="text"], 
+.page-node-5853 input[type="email"], 
+.page-node-5853 input[type="number"], 
+.page-node-5853 textarea 
+{
+	width: 100%;
+}
+
+.page-node-5686 .het .hetvege ,
+.page-node-5853 .het .hetvege {
+	background-color: #ddd;
+}
+
+.page-node-5686 .het .betelt ,
+.page-node-5853 .het .betelt {
+	opacity: 0.3;
+}
+
+.page-node-5686 .het .szabad:hover,
+.page-node-5853 .het .szabad:hover,
+#lapozo span:hover
+
+ {
+	cursor: pointer;
+	color: #1D6BB8;
+}
+
+.page-node-5686 .het .hetvege span,
+.page-node-5686 .het .lejart,
+.page-node-5686 .field-name-field-tags,
+.page-node-5853 .het .hetvege span,
+.page-node-5853 .het .lejart,
+.page-node-5853 .field-name-field-tags
+{
+	display: none;
+}
+
+.page-node-5686 #kiallitas-jelentkezes,
+.page-node-5853 #kiallitas-jelentkezes {
+	display: none;
+	font-size: 16px;
+}
+
+.page-node-5686 table ,
+.page-node-5853 table {
+		font-size: 14px;
+}
+
+.page-node-5853 #kiallitas-regisztracio div ,
+.page-node-5686 #kiallitas-regisztracio div {
+	margin: 14px 0;
+}
+
+.page-node-5686 #kiallitas-regisztracio,
+.page-node-5853 #kiallitas-regisztracio
+{
+	text-align: center;
+	font-size: 19px;
+	padding-bottom: 5px;
+	border-radius: 5px;
+}
+
+#e100_cimlap {
+	font-weight: bold;
+    text-align: center;
+    padding: 10px;
+	font-size: 20px;
+	background-color: #1D6BB8;
+	border-radius: 5px;
+}
+
+#e100_cimlap a {
+	color: #fff;
+}
+
+.page-node-5967 table {
+	width: 650px;
+	display: block;
+	float: none;
+}
+
+.page-node-5967 tbody { border: none; }
+
+#block-views-exp-online-oktatashoz-page--2 { 	background-color: #1D6BB8 !important; }
+#block-views-exp-online-oktatashoz-page--2 label { 	color: #fff !important; }
+.view-id-online_oktatashoz td.active { background-color: #eee !important; }
+
+
+/* nyil */
+#block-block-54 {
+	display: block;
+	position: relative;
+	top: -48px;
+	left: 150px;
+	margin-bottom: -50px;
+}
+
+
+#block-block-54 #select-library {
+	background-color: #fff;
+	text-align: left;
+	background-image: url('/sites/all/themes/education/education/images/select_library.png');
+	background-size: 100px;
+	background-repeat: no-repeat;
+	width: 1px;
+	opacity: 0;
+	padding: 0px;
+	margin-left: 0px;
+	padding-left: 0px;
+	border-radius: 5px;
+	margin-top: 0px;
+	height: 5px;
+	overflow: hidden;
+	margin-bottom: 50px;
+}
+
+#block-block-54 #select-library h2 {
+	text-align: left;
+	margin: 0;
+	margin-bottom: 5px;
+}
+
+
+@media only screen and (max-width: 800px) {
+	.page-node-5686 #hetek
+	 {
+		width: 96%;
+		margin: 2%;
+		display: block;
+	}
+
+	.page-node-5686 #eotvos100reg
+	 {
+		width: 96%;
+		margin: 2%;
+		display: block;
+	}
+	
+}

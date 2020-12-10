@@ -1175,7 +1175,7 @@ h1, h2, h3, h4, h5, h6, figure {
   letter-spacing: 2px;
   text-transform: uppercase;
   font-family: "Source Sans Pro", Arial, sans-serif;
-  color: #fff;
+  color: #349eeb;
 }
 #fh5co-footer .copyright .block {
   display: block;
@@ -1217,7 +1217,7 @@ h1, h2, h3, h4, h5, h6, figure {
   transition: 0.5s;
 }
 @media screen and (max-width: 768px) {
-  #fh5co-offcanvas {
+  #fh5co-offcanvas {#fh5co-footer .fh5co-widget h3
     display: block;
   }
 }

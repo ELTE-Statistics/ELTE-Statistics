@@ -6,7 +6,7 @@ import hu.elte.inf.statistics.Models.StaffReport;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-/** Data access object for Staff */
+/** Data access object for Professor */
 public class StaffDAO {
 
     static final String CUR_DIR = System.getProperty("user.dir");
@@ -14,7 +14,7 @@ public class StaffDAO {
 
     private Connection conn = null;
 
-    /** Constructor of StaffDAO */
+    /** Constructor of ProfessorDAO */
     public StaffDAO() {
         try {
             this.conn = DriverManager.getConnection(DB_URL);
@@ -29,7 +29,7 @@ public class StaffDAO {
      * @param report
      * @return false if database contains report, true otherwise
      */
-    public boolean addStaffReport(StaffReport report) {
+    public boolean addProfessorReport(StaffReport report) {
         String cName = report.getFullName();
         if (!this.contains(report.getFullName())) {
             this.addStaff(
