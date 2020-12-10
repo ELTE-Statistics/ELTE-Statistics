@@ -52,6 +52,6 @@ public class RateProfessorController {
             req.setAttribute("txt", "Review has been submitted.");
         }
 
-        return new ModelAndView("rateProfessor");
+        return new ModelAndView("redirect:/statistics");
     }
 }
