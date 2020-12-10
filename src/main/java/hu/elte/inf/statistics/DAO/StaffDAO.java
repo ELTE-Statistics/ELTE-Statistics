@@ -34,21 +34,21 @@ public class StaffDAO {
         if (!this.contains(report.getFullName())) return false;
 
         String cName = report.getFullName();
-        int communicationDataCount = this.getCommunicationDataCount(cName);
-        int teachingDataCount = this.getTeachingDataCount(cName);
+        int preparednessDataCount = this.getPreparednessDataCount(cName);
+        int helpfulnessDataCount = this.getHelpfulnessDataCount(cName);
 
-        this.setAverageCommunicationSkills(
+        this.setAveragePreparedness(
                 cName,
-                (this.getAverageCommunicationSkills(cName) * communicationDataCount
-                                + report.getCommunicationSkills())
-                        / (communicationDataCount + 1));
-        this.setAverageTeachingQuality(
+                (this.getAveragePreparedness(cName) * preparednessDataCount
+                                + report.getPreparedness())
+                        / (preparednessDataCount + 1));
+        this.setAverageHelpfulness(
                 cName,
-                (this.getAverageTeachingQuality(cName) * teachingDataCount
-                                + report.getTeachingQuality())
-                        / (teachingDataCount + 1));
-        this.setCommunicationDataCount(cName, this.getCommunicationDataCount(cName) + 1);
-        this.setTeachingDataCount(cName, this.getTeachingDataCount(cName) + 1);
+                (this.getAverageHelpfulness(cName) * helpfulnessDataCount
+                                + report.getHelpfulness())
+                        / (helpfulnessDataCount + 1));
+        this.setPreparednessDataCount(cName, this.getPreparednessDataCount(cName) + 1);
+        this.setHelpfulnessDataCount(cName, this.getHelpfulnessDataCount(cName) + 1);
 
         return true;
     }
@@ -71,10 +71,10 @@ public class StaffDAO {
 
             st = conn.prepareStatement(query);
             st.setString(1, staff.getFullName());
-            st.setDouble(2, staff.getAverageCommunicationSkills());
-            st.setInt(3, staff.getCommunicationDataCount());
-            st.setDouble(4, staff.getAverageTeachingQuality());
-            st.setInt(5, staff.getTeachingDataCount());
+            st.setDouble(2, staff.getAveragePreparedness());
+            st.setInt(3, staff.getPreparednessDataCount());
+            st.setDouble(4, staff.getAverageHelpfulness());
+            st.setInt(5, staff.getHelpfulnessDataCount());
             st.executeUpdate();
 
             if (res == null || !res.next()) {
@@ -101,10 +101,10 @@ public class StaffDAO {
         Staff staff =
                 new Staff(
                         name,
-                        this.getAverageCommunicationSkills(name),
-                        this.getCommunicationDataCount(name),
-                        this.getAverageTeachingQuality(name),
-                        this.getTeachingDataCount(name));
+                        this.getAveragePreparedness(name),
+                        this.getPreparednessDataCount(name),
+                        this.getAverageHelpfulness(name),
+                        this.getHelpfulnessDataCount(name));
         return staff;
     }
 
@@ -175,24 +175,24 @@ public class StaffDAO {
         }
 
         String name = "";
-        double averageCommunicationSkills = 0.0;
-        double averageTeachingQuality = 0.0;
-        int communicationDataCount = 0;
-        int teachingDataCount = 0;
+        double averagePreparedness = 0.0;
+        double averageHelpfulness = 0.0;
+        int preparednessDataCount = 0;
+        int helpfulnessDataCount = 0;
         try {
             while (res != null && res.next()) {
                 name = res.getString("full_name");
-                averageCommunicationSkills = res.getDouble("average_communication");
-                communicationDataCount = res.getInt("communication_count");
-                averageTeachingQuality = res.getDouble("average_teaching");
-                teachingDataCount = res.getInt("teaching_count");
+                averagePreparedness = res.getDouble("average_preparedness");
+                preparednessDataCount = res.getInt("preparedness_count");
+                averageHelpfulness = res.getDouble("average_helpfulness");
+                helpfulnessDataCount = res.getInt("helpfulness_count");
                 Staff staff =
                         new Staff(
                                 name,
-                                averageCommunicationSkills,
-                                communicationDataCount,
-                                averageTeachingQuality,
-                                teachingDataCount);
+                                averagePreparedness,
+                                preparednessDataCount,
+                                averageHelpfulness,
+                                helpfulnessDataCount);
                 lst.add(staff);
             }
         } catch (SQLException throwables) {
@@ -227,10 +227,10 @@ public class StaffDAO {
 
     /**
      * @param staffName
-     * @return communication data amount
+     * @return preparedness data amount
      */
-    public int getCommunicationDataCount(String staffName) {
-        String query = "select communication_count from staff where full_name = ?";
+    public int getPreparednessDataCount(String staffName) {
+        String query = "select preparedness_count from staff where full_name = ?";
         PreparedStatement st = null;
         ResultSet res = null;
         try {
@@ -258,18 +258,18 @@ public class StaffDAO {
     }
 
     /**
-     * Setter for communication Data amount
+     * Setter for preparedness Data amount
      *
      * @param staffName
-     * @param communicationData
+     * @param preparednessData
      */
-    public void setCommunicationDataCount(String staffName, int communicationData) {
-        String query = "update  staff set communication_count = ? where full_name = ?";
+    public void setPreparednessDataCount(String staffName, int preparednessData) {
+        String query = "update staff set preparedness_count = ? where full_name = ?";
         PreparedStatement st = null;
         ResultSet res = null;
         try {
             st = conn.prepareStatement(query);
-            st.setInt(1, communicationData);
+            st.setInt(1, preparednessData);
             st.setString(2, staffName);
             st.executeUpdate();
         } catch (SQLException throwables) {
@@ -287,10 +287,10 @@ public class StaffDAO {
 
     /**
      * @param staffName
-     * @return teaching data amount
+     * @return helpfulness data amount
      */
-    public int getTeachingDataCount(String staffName) {
-        String query = "select teaching_count from staff where full_name = ?";
+    public int getHelpfulnessDataCount(String staffName) {
+        String query = "select helpfulness_count from staff where full_name = ?";
         PreparedStatement st = null;
         ResultSet res = null;
         try {
@@ -318,18 +318,18 @@ public class StaffDAO {
     }
 
     /**
-     * Setter for teaching data amount
+     * Setter for helpfulness data amount
      *
      * @param staffName
-     * @param teachingData
+     * @param helpfulnessData
      */
-    public void setTeachingDataCount(String staffName, int teachingData) {
-        String query = "update  staff set teaching_count = ? where full_name = ?";
+    public void setHelpfulnessDataCount(String staffName, int helpfulnessData) {
+        String query = "update staff set helpfulness_count = ? where full_name = ?";
         PreparedStatement st = null;
         ResultSet res = null;
         try {
             st = conn.prepareStatement(query);
-            st.setInt(1, teachingData);
+            st.setInt(1, helpfulnessData);
             st.setString(2, staffName);
             st.executeUpdate();
         } catch (SQLException throwables) {
@@ -347,10 +347,10 @@ public class StaffDAO {
 
     /**
      * @param staffName
-     * @return average level of communication skills
+     * @return average level of preparedness
      */
-    public double getAverageCommunicationSkills(String staffName) {
-        String query = "select average_communication from staff where full_name = ?";
+    public double getAveragePreparedness(String staffName) {
+        String query = "select average_preparedness from staff where full_name = ?";
         PreparedStatement st = null;
         ResultSet res = null;
         try {
@@ -378,18 +378,18 @@ public class StaffDAO {
     }
 
     /**
-     * Setter for average communication skills
+     * Setter for average preparedness
      *
      * @param staffName
-     * @param averageCommunicationSkills
+     * @param averagePreparedness
      */
-    public void setAverageCommunicationSkills(String staffName, double averageCommunicationSkills) {
-        String query = "update  staff set average_communication = ? where full_name = ?";
+    public void setAveragePreparedness(String staffName, double averagePreparedness) {
+        String query = "update  staff set average_preparedness = ? where full_name = ?";
         PreparedStatement st = null;
         ResultSet res = null;
         try {
             st = conn.prepareStatement(query);
-            st.setDouble(1, averageCommunicationSkills);
+            st.setDouble(1, averagePreparedness);
             st.setString(2, staffName);
             st.executeUpdate();
         } catch (SQLException throwables) {
@@ -407,10 +407,10 @@ public class StaffDAO {
 
     /**
      * @param staffName
-     * @return average level of teaching quality
+     * @return average level of helpfulness
      */
-    public double getAverageTeachingQuality(String staffName) {
-        String query = "select average_teaching from staff where full_name = ?";
+    public double getAverageHelpfulness(String staffName) {
+        String query = "select average_helpfulness from staff where full_name = ?";
         PreparedStatement st = null;
         ResultSet res = null;
         try {
@@ -438,18 +438,18 @@ public class StaffDAO {
     }
 
     /**
-     * Setter for average level of teaching quality
+     * Setter for average level of helpfulness
      *
      * @param staffName
-     * @param averageTeachingQuality
+     * @param averageHelpfulness
      */
-    public void setAverageTeachingQuality(String staffName, double averageTeachingQuality) {
-        String query = "update  staff set average_teaching = ? where full_name = ?";
+    public void setAverageHelpfulness(String staffName, double averageHelpfulness) {
+        String query = "update  staff set average_helpfulness = ? where full_name = ?";
         PreparedStatement st = null;
         ResultSet res = null;
         try {
             st = conn.prepareStatement(query);
-            st.setDouble(1, averageTeachingQuality);
+            st.setDouble(1, averageHelpfulness);
             st.setString(2, staffName);
             st.executeUpdate();
         } catch (SQLException throwables) {

@@ -3,14 +3,13 @@ package hu.elte.inf.statistics.Models;
 import java.util.ArrayList;
 
 /**
- * Represents Staff Class Staff includes: fullname, information about : communication skills,
- * teaching quality
+ * Represents Staff Class Staff includes: fullname, information about : preparedness, helpfulness
  */
 public class Staff {
 
     private String fullName;
-    private double averageCommunicationSkills, averageTeachingQuality;
-    private int communicationDataCount, teachingDataCount;
+    private double averagePreparedness, averageHelpfulness;
+    private int preparednessDataCount, helpfulnessDataCount;
     private ArrayList<String> comments = new ArrayList<String>();
 
     /** @param name Constructor of Staff with staff name */
@@ -19,23 +18,25 @@ public class Staff {
     }
 
     /**
+     * constructor of Staff with five arguments
+     *
      * @param fullName
-     * @param averageCommunicationSkills
-     * @param communicationDataCount
-     * @param averageTeachingQuality
-     * @param teachingDataCount constructor of Staff with five arguments
+     * @param averagePreparedness
+     * @param preparednessDataCount
+     * @param averageHelpfulness
+     * @param helpfulnessDataCount
      */
     public Staff(
             String fullName,
-            double averageCommunicationSkills,
-            int communicationDataCount,
-            double averageTeachingQuality,
-            int teachingDataCount) {
+            double averagePreparedness,
+            int preparednessDataCount,
+            double averageHelpfulness,
+            int helpfulnessDataCount) {
         this.fullName = fullName;
-        this.averageCommunicationSkills = averageCommunicationSkills;
-        this.communicationDataCount = communicationDataCount;
-        this.averageTeachingQuality = averageTeachingQuality;
-        this.teachingDataCount = teachingDataCount;
+        this.averagePreparedness = averagePreparedness;
+        this.preparednessDataCount = preparednessDataCount;
+        this.averageHelpfulness = averageHelpfulness;
+        this.helpfulnessDataCount = helpfulnessDataCount;
     }
 
     /**
@@ -45,15 +46,15 @@ public class Staff {
     public boolean addReport(CourseReport report) {
         if (!report.getCourseName().equals(this.fullName)) return false;
 
-        averageCommunicationSkills =
-                (averageCommunicationSkills * communicationDataCount + report.getDifficulty())
-                        / (double) (communicationDataCount + 1);
-        communicationDataCount += 1;
+        averagePreparedness =
+                (averagePreparedness * preparednessDataCount + report.getDifficulty())
+                        / (double) (preparednessDataCount + 1);
+        preparednessDataCount += 1;
 
-        averageTeachingQuality =
-                (averageTeachingQuality * teachingDataCount + report.getUsefulness())
-                        / (double) (teachingDataCount + 1);
-        teachingDataCount += 1;
+        averageHelpfulness =
+                (averageHelpfulness * helpfulnessDataCount + report.getUsefulness())
+                        / (double) (helpfulnessDataCount + 1);
+        helpfulnessDataCount += 1;
 
         comments.add(report.getComment());
 
@@ -65,24 +66,24 @@ public class Staff {
         return fullName;
     }
 
-    /** @return average level of communication skills */
-    public double getAverageCommunicationSkills() {
-        return averageCommunicationSkills;
+    /** @return average level of preparedness */
+    public double getAveragePreparedness() {
+        return averagePreparedness;
     }
 
-    /** @return average level of teaching quality */
-    public double getAverageTeachingQuality() {
-        return averageTeachingQuality;
+    /** @return average level of helpfulness */
+    public double getAverageHelpfulness() {
+        return averageHelpfulness;
     }
 
-    /** @return number of communication data */
-    public int getCommunicationDataCount() {
-        return communicationDataCount;
+    /** @return number of preparedness */
+    public int getPreparednessDataCount() {
+        return preparednessDataCount;
     }
 
-    /** @return number of teaching data */
-    public int getTeachingDataCount() {
-        return teachingDataCount;
+    /** @return number of helpfulness */
+    public int getHelpfulnessDataCount() {
+        return helpfulnessDataCount;
     }
 
     /** @return arraylist that contains comments about Staff */

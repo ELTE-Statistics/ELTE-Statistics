@@ -1,27 +1,28 @@
 package hu.elte.inf.statistics.Models;
 
 /**
- * Represent StaffReport Class Includes: name of report, comment, communication Skills amount and
- * teaching quality amount
+ * Represent StaffReport Class Includes: name of report, comment, preparedness amount and helpfulness amount
  */
 public class StaffReport {
 
     private String fullName;
     private String comment;
-    private double communicationSkills, teachingQuality;
+    private double preparedness, helpfulness;
 
     /**
+     * Constructor staffReport with four parameters
+     *
      * @param fullName
      * @param comment
-     * @param communicationSkills
-     * @param teachingQuality Constructor staffReport with four parameters
+     * @param preparedness
+     * @param helpfulness
      */
     public StaffReport(
-            String fullName, String comment, int communicationSkills, int teachingQuality) {
+            String fullName, String comment, int preparedness, int helpfulness) {
         this.fullName = fullName;
         this.comment = comment;
-        this.teachingQuality = teachingQuality;
-        this.communicationSkills = communicationSkills;
+        this.helpfulness = helpfulness;
+        this.preparedness = preparedness;
     }
 
     /** @return name of courseReport */
@@ -34,13 +35,13 @@ public class StaffReport {
         return comment;
     }
 
-    /** @return level of communication skills */
-    public double getCommunicationSkills() {
-        return communicationSkills;
+    /** @return level of preparedness */
+    public double getPreparedness() {
+        return preparedness;
     }
 
-    /** @return level of teaching quality */
-    public double getTeachingQuality() {
-        return teachingQuality;
+    /** @return level of helpfulness */
+    public double getHelpfulness() {
+        return helpfulness;
     }
 }
