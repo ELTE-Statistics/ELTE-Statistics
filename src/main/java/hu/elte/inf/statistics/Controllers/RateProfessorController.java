@@ -1,7 +1,7 @@
 package hu.elte.inf.statistics.Controllers;
 
-import hu.elte.inf.statistics.DAO.CoursesDAO;
-import hu.elte.inf.statistics.Models.CourseReport;
+import hu.elte.inf.statistics.DAO.StaffDAO;
+import hu.elte.inf.statistics.Models.StaffReport;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -45,10 +45,10 @@ public class RateProfessorController {
             HttpServletRequest req) {
 
         if (button.equals("submit-bt")) {
-            CourseReport courseReport =
-                    new CourseReport(professorName, comment, preparedness, helpfulness);
-            CoursesDAO coursesDAO = new CoursesDAO();
-            coursesDAO.addCourseReport(courseReport);
+            StaffReport staffReport =
+                    new StaffReport(professorName, comment, preparedness, helpfulness);
+            StaffDAO staffDAO = new StaffDAO();
+            staffDAO.addStaffReport(staffReport);
             req.setAttribute("txt", "Review has been submitted.");
         }
 
