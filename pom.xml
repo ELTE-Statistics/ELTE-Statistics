@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>hu.elte.inf.statistics</groupId>
-	<artifactId>ELTE-Statistics</artifactId>
+	<artifactId>elte-statistics</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>ELTE-Statistics</name>
 	<description>ELTE Statistics</description>
@@ -17,6 +17,14 @@
 	<properties>
 		<java.version>11</java.version>
 	</properties>
+
+	<distributionManagement>
+		<repository>
+			<id>github</id>
+			<name>GitHub Packages</name>
+			<url>https://maven.pkg.github.com/ELTE-Statistics/ELTE-Statistics</url>
+		</repository>
+	</distributionManagement>
 
 	<dependencies>
 		<dependency>
