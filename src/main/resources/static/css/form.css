@@ -22,10 +22,13 @@ button[type=submit]:hover {
 }
 
 button[type=submit] {
-    position:absolute;
     transition: .5s ease;
-    top: 66%;
-    left: 70%;
+    margin-top: 20px;
+    margin-right: 80px;
+}
+
+.submit-container {
+    text-align: right;
 }
 
 .loginbox {
