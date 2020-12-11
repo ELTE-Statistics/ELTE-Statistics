@@ -1,17 +1,16 @@
 table, th, td {
-    width: 40%;
     padding: 6px !important;
     border: 2px solid #349eeb;
 }
 
 .table-container {
-	max-width: 1000px;
-	margin-right:auto;
-	margin-left:auto;
-	display:flex;
-	justify-content:center;
-	align-items:center;
-	min-height:100vh;
+	max-width: 80%;
+	margin-right: auto;
+	margin-left: auto;
+	display: inline;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
 }
 /*
 th {
