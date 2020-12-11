@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>hu.elte.inf.statistics</groupId>
-	<artifactId>ELTE-Statistics</artifactId>
+	<artifactId>elte-statistics</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>ELTE-Statistics</name>
 	<description>ELTE Statistics</description>
