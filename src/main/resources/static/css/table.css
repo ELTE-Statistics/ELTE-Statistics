@@ -14,10 +14,6 @@ table, th, td {
 	justify-content: center;
 	align-items: center;
 }
-/*
-th {
-    background:#349eeb;
-}*/
 
 .table-container caption {
     color: #349eeb;
